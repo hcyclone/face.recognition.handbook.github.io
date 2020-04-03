@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>handbook of face recognition</title>
+
+    <!-- Favicon -->
+    <!-- {% load static %} -->
+    <link rel="icon" href="static/img/favicon_2.ico">
+<!-- {#    <link rel="shortcut icon" href="static/assets/media/image/favicon.png"/>#} -->
+    <!-- Plugin styles -->
+    <link rel="stylesheet" href="static/vendors/bundle.css" type="text/css">
+    <!-- Slick -->
+    <link rel="stylesheet" href="static/vendors/slick/slick.css" type="text/css">
+    <link rel="stylesheet" href="static/vendors/slick/slick-theme.css" type="text/css">
+
+    <!-- Daterangepicker -->
+    <link rel="stylesheet" href="static/vendors/datepicker/daterangepicker.css" type="text/css">
+
+    <!-- DataTable -->
+    <link rel="stylesheet" href="static/vendors/dataTable/datatables.min.css" type="text/css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="static/assets/css/app.css" type="text/css">
+    <!-- {% block script_link %} -->
+    <link rel="stylesheet" href="static/css/highlights/default.css">
+    <link rel="stylesheet" href="static/css/pygments.css"/>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <script src="static/js/jquery-2.1.3.min.js" ></script>
+    <style>
+    h1, h2, h3{color:rgb(33,150,243)!important}
+    .h1, h1 {
+        font-size: 28px;
+    }
+    p {
+        font-size: 16px;
+        letter-spacing: 0;
+        margin: 0 0 10px;
+        font-weight: 400;
+        line-height: 24px;
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+    </style>
+
+    <script type="text/x-mathjax-config">
+        window.MathJax.Hub.Config({
+            showProcessingMessages: false, //关闭js加载过程信息
+            messageStyle: "none", //不显示信息
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ], //行内公式选择符
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ], //段内公式选择符
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'], //避开某些标签
+                ignoreClass:"comment-content" //避开含该Class的标签
+            },
+            "HTML-CSS": {
+                availableFonts: ["STIX","TeX"], //可选字体
+                showMathMenu: false //关闭右击菜单显示
+            }
+        });
+        window.MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    </script>
+    <script src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" async="async" src="static/js/MathJax.js"></script>
+    <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js"></script>
+    <script data-no-instant>
+        InstantClick.on('change', function(isInitialLoad){
+            if (isInitialLoad === false) {
+                if (typeof MathJax !== 'undefined'){
+                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+                }
+            }
+        });
+        InstantClick.init();
+    </script>
+<!-- <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"> -->
+</script>
+    <!-- {% endblock %} -->
+</head>
+<body>
+
+<!-- begin::preloader-->
+<!-- {#<div class="preloader">#}
+{#    <div class="preloader-icon"></div>#}
+{#</div>#} -->
+<!-- end::preloader -->
+
+<!-- begin::header -->
+<div class="header" style="background-color: #26A69A;color: white">
+
+    <div class="header-left">
+        <div class="navigation-toggler">
+            <a href="#" data-action="navigation-toggler">
+                <i data-feather="menu"></i>
+            </a>
+        </div>
+        <div class="header-logo">
+            <a href="d2l.html">
+<!-- {#                <img class="logo" src="{% static 'img/favicon_2.ico' %}" alt="logo">#} -->
+                <img style="width: 150px;display: block" class="logo" src="static/img/d2l_nav.png" alt="logo">
+<!-- {#                <img class="logo-light" src="#" alt="light logo">#} -->
+            </a>
+            <!-- <div style="margin:0 15%;text-align: center;z-index: 0;">
+                <div class="page-title" style="text-align: center;padding: 0">
+                    <span class="logo" style="color:white;font-size: 28px;">Handbook of Face Recognition (3rd Edition)</span>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    
+    <div class="header-body" >
+        <div style="margin:auto;text-align: center;">
+            <div class="page-title" style="text-align: center;padding: 0">
+                <span class="logo" style="color:white;font-size: 28px;">Handbook of Face Recognition (3rd Edition) <a href="d2l.html">d2l</a></span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- end::header -->
+
+<!-- begin::main -->
+<div id="main">
+
+    <!-- begin::navigation -->
+    <div class="navigation" style="padding: 0">
+        <div class="navigation-menu-body" style="font-size: 15px; font-weight: normal;color: #6a737d">
+            <div class="navigation-menu-group">
+                <div class="open"
+                     id="dashboards">
+                    <ul>
+                        <li>
+                            <a href="">Preface</a>
+                        </li>
+                        <li>
+                            <a href="">Installation</a>
+                        </li>
+                        <li>
+                            <a href="">Notation</a>
+                        </li>
+                        <li>
+                            <a href="">I. Introduction and Background</a>
+                            <ul>
+                                <li>
+                                    <a href="">1. Face Recognition Research and Development</a>
+                                </li>
+                                <li>
+                                    <a href="">2. The Deep Neural Networks Approach to Face Recognition</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="">II. Fundamentals of Deep Neural Networks</a>
+                            <ul>
+                                <li>
+                                    <a href="">3. Neural Network Architectures</a>
+                                </li>
+                                <li>
+                                    <a href="">4. Generative Autoencoder Networks</a>
+                                </li>
+                                <li>
+                                    <a href="">5. Generative Adversarial Networks</a>
+                                </li>
+                                <li>
+                                    <a href="">6. Transfer Learning and Domain Adaptation</a>
+                                </li>
+                                <li>
+                                    <a href="">7. Semi-supervised Learning</a>
+                                </li>
+                                <li>
+                                    <a href="">8. Neural Network Model Compression and Acceleration</a>
+                                </li>
+                                <li>
+                                    <a href="">9. Deep Learning Development Frameworks</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">III. Face Recognition by Deep Neural Networks</a>
+                            <ul>
+                                <li>
+                                    <a href="">10. Face Detection</a>
+                                </li>
+                                <li>
+                                    <a href="">11. Face Alignment</a>
+                                </li>
+                                <li>
+                                    <a href="">12. Face Parsing</a>
+                                </li>
+                                <li>
+                                    <a href="">13. 3D Face Landmarking and Morphing</a>
+                                </li>
+                                <li>
+                                    <a href="">14. Face Similarity Metric Learning</a>
+                                </li>
+                                <li>
+                                    <a href="">15. Face Feature Learning</a>
+                                </li>
+                                <li>
+                                    <a href="">16. Pose Invariant Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">17. Age Invariant Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">18. 3D Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">19. Heterogeneous Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">20. Face Spoofing Detection</a>
+                                </li>
+                                <li>
+                                    <a href="">21. Adversarial Face Perturbations</a>
+                                </li>
+                                <li>
+                                    <a href="">22. Face Expression Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">23. Face Attribute Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">24. Multi-task Learning for Face Analysis</a>
+                                </li>
+                                <li>
+                                    <a href="">25. Face Recognition in Video</a>
+                                </li>
+                                <li>
+                                    <a href="">26. Face Super-resolution</a>
+                                </li>
+                                <li>
+                                    <a href="">27. Face Data Augmentation</a>
+                                </li>
+                                <li>
+                                    <a href="">28. Face Animation</a>
+                                </li>
+                                <li>
+                                    <a href="">29. Explainable face recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">30. Bias in Face Recognition</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">IV. Face Recognition Systems</a>
+                            <ul>
+                <li>
+                    <a href="">31. Face Unlock Systems</a>
+                </li>
+                <li>
+                    <a href="">32. Large Scale Face Search Systems</a>
+                </li>
+                <li>
+                    <a href="">33. Security and Privacy Protection</a>
+                </li>
+                <li>
+                    <a href="">34. Database and Benchmarking</a>
+                </li>
+                <li>
+                    <a href="">35. Face Recognition Standards</a>
+                </li>
+                <li>
+                    <a href="">36. Government Regulations and Ethics</a>
+                </li>
+            </ul>
+                        </li>
+                        <li>
+                            <a href="">Appendix. Open Source Data and Code</a>
+                            <ul>
+                                <li>
+                                    <a href="">1. Open Source Data and Code: Overview</a>
+                                </li>
+                                <li>
+                                    <a href="">2. Fundamentals of Deep Neural Networks</a>
+                                </li>
+                                <li>
+                                    <a href="">3. Face Recognition by Deep Neural Networks</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="https://github.com/FRH-Code-Data/Appendix/blob/master/References.md">References</a>
+                            <ul>
+                                <li>
+                                    <a href="">Editors</a>
+                                </li>
+                                <li>
+                                    <a href="">Contributions</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end::navigation -->
+
+    <div class="main-content">
+        <div class="main">
+            <div class="document" role="main" style="padding: 0 15%">
+<h1>Implementation of Softmax Regression from Scratch</h1>
+<p>:label:<code>sec_softmax_scratch</code></p>
+<p>Just as we implemented linear regression from scratch,
+we believe that multiclass logistic (softmax) regression
+is similarly fundamental and you ought to know
+the gory details of how to implement it yourself.
+As with linear regression, after doing things by hand
+we will breeze through an implementation in Gluon for comparison.
+To begin, let's import the familiar packages.</p>
+<pre><code class="language-{.python">import d2l
+from mxnet import autograd, np, npx, gluon
+from IPython import display
+npx.set_np()
+</code></pre>
+<p>We will work with the Fashion-MNIST dataset, just introduced in :numref:<code>sec_fashion_mnist</code>,
+setting up an iterator with batch size $256$.</p>
+<pre><code class="language-{.python">batch_size = 256
+train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size)
+</code></pre>
+<h2>Initializing Model Parameters</h2>
+<p>As in our linear regression example,
+each example here will be represented by a fixed-length vector.
+Each example in the raw data is a $28 \times 28$ image.
+In this section, we will flatten each image,
+treating them as $784$ 1D vectors.
+In the future, we will talk about more sophisticated strategies
+for exploiting the spatial structure in images,
+but for now we treat each pixel location as just another feature.</p>
+<p>Recall that in softmax regression,
+we have as many outputs as there are categories.
+Because our dataset has $10$ categories,
+our network will have an output dimension of $10$.
+Consequently, our weights will constitute a $784 \times 10$ matrix
+and the biases will constitute a $1 \times 10$ vector.
+As with linear regression, we will initialize our weights $W$
+with Gaussian noise and our biases to take the initial value $0$.</p>
+<pre><code class="language-{.python">num_inputs = 784
+num_outputs = 10
+
+W = np.random.normal(0, 0.01, (num_inputs, num_outputs))
+b = np.zeros(num_outputs)
+</code></pre>
+<p>Recall that we need to <em>attach gradients</em> to the model parameters.
+More literally, we are allocating memory for future gradients to be stored
+and notifiying MXNet that we will want to calculate gradients
+with respect to these parameters in the future.</p>
+<pre><code class="language-{.python">W.attach_grad()
+b.attach_grad()
+</code></pre>
+<h2>The Softmax</h2>
+<p>Before implementing the softmax regression model,
+let's briefly review how operators such as <code>sum</code> work
+along specific dimensions in an <code>ndarray</code>.
+Given a matrix <code>X</code> we can sum over all elements (default) or only
+over elements in the same axis, <em>i.e.</em>, the column (<code>axis=0</code>) or the same row (<code>axis=1</code>).
+Note that if <code>X</code> is an array with shape <code>(2, 3)</code>
+and we sum over the columns (<code>X.sum(axis=0</code>),
+the result will be a (1D) vector with shape <code>(3,)</code>.
+If we want to keep the number of axes in the original array
+(resulting in a 2D array with shape <code>(1, 3)</code>),
+rather than collapsing out the dimension that we summed over
+we can specify <code>keepdims=True</code> when invoking <code>sum</code>.</p>
+<pre><code class="language-{.python">X = np.array([[1, 2, 3], [4, 5, 6]])
+print(X.sum(axis=0, keepdims=True), '\n', X.sum(axis=1, keepdims=True))
+</code></pre>
+<p>We are now ready to implement the softmax function.
+Recall that softmax consists of two steps:
+First, we exponentiate each term (using <code>exp</code>).
+Then, we sum over each row (we have one row per example in the batch)
+to get the normalization constants for each example.
+Finally, we divide each row by its normalization constant,
+ensuring that the result sums to $1$.
+Before looking at the code, let's recall
+what this looks expressed as an equation:</p>
+<p>$$
+\mathrm{softmax}(\mathbf{X})<em>{ij} = \frac{\exp(X_{ij})}{\sum_k \exp(X</em>{ik})}.
+$$</p>
+<p>The denominator, or normalization constant,
+is also sometimes called the partition function
+(and its logarithm is called the log-partition function).
+The origins of that name are in <a href="https://en.wikipedia.org/wiki/Partition_function_(statistical_mechanics)">statistical physics</a>
+where a related equation models the distribution
+over an ensemble of particles.</p>
+<pre><code class="language-{.python">def softmax(X):
+    X_exp = np.exp(X)
+    partition = X_exp.sum(axis=1, keepdims=True)
+    return X_exp / partition  # The broadcast mechanism is applied here
+</code></pre>
+<p>As you can see, for any random input,
+we turn each element into a non-negative number.
+Moreover, each row sums up to 1,
+as is required for a probability.
+Note that while this looks correct mathematically,
+we were a bit sloppy in our implementation
+because failed to take precautions against numerical overflow or underflow
+due to large (or very small) elements of the matrix,
+as we did in :numref:<code>sec_naive_bayes</code>.</p>
+<pre><code class="language-{.python">X = np.random.normal(size=(2, 5))
+X_prob = softmax(X)
+X_prob, X_prob.sum(axis=1)
+</code></pre>
+<h2>The Model</h2>
+<p>Now that we have defined the softmax operation,
+we can implement the softmax regression model.
+The below code defines the forward pass through the network.
+Note that we flatten each original image in the batch
+into a vector with length <code>num_inputs</code> with the <code>reshape</code> function
+before passing the data through our model.</p>
+<pre><code class="language-{.python">def net(X):
+    return softmax(np.dot(X.reshape(-1, num_inputs), W) + b)
+</code></pre>
+<h2>The Loss Function</h2>
+<p>Next, we need to implement the cross-entropy loss function,
+introduced in :numref:<code>sec_softmax</code>.
+This may be the most common loss function
+in all of deep learning because, at the moment,
+classification problems far outnumber regression problems.</p>
+<p>Recall that cross-entropy takes the negative log likelihood
+of the predicted probability assigned to the true label $-\log P(y \mid x)$.
+Rather than iterating over the predictions with a Python <code>for</code> loop
+(which tends to be inefficient),
+we can use the <code>pick</code> function
+which allows us to easily select the appropriate terms
+from the matrix of softmax entries.
+Below, we illustrate the <code>pick</code> function on a toy example,
+with $3$ categories and $2$ examples.</p>
+<pre><code class="language-{.python">y_hat = np.array([[0.1, 0.3, 0.6], [0.3, 0.2, 0.5]])
+y_hat[[0, 1], [0, 2]]
+</code></pre>
+<p>Now we can implement the cross-entropy loss function efficiently with just one line of code.</p>
+<pre><code class="language-{.python">def cross_entropy(y_hat, y):
+    return - np.log(y_hat[range(len(y_hat)), y])
+</code></pre>
+<h2>Classification Accuracy</h2>
+<p>Given the predicted probability distribution <code>y_hat</code>,
+we typically choose the class with highest predicted probability
+whenever we must output a <em>hard</em> prediction.
+Indeed, many applications require that we make a choice.
+Gmail must categorize an email into Primary, Social, Updates, or Forums.
+It might estimate probabilities internally,
+but at the end of the day it has to choose one among the categories.</p>
+<p>When predictions are consistent with the actual category <code>y</code>, they are correct.
+The classification accuracy is the fraction of all predictions that are correct.
+Although it can be difficult optimize accuracy directly (it is not differentiable),
+it is often the performance metric that we care most about,
+and we will nearly always report it when training classifiers.</p>
+<p>To compute accuracy we do the following:
+First, we execute <code>y_hat.argmax(axis=1)</code>
+to gather the predicted classes
+(given by the indices for the largest entires each row).
+The result has the same shape as the variable <code>y</code>.
+Now we just need to check how frequently the two match.
+Since the equality operator <code>==</code> is datatype-sensitive
+(e.g., an <code>int</code> and a <code>float32</code> are never equal),
+we also need to convert both to the same type (we pick <code>float32</code>).
+The result is an <code>ndarray</code> containing entries of 0 (false) and 1 (true).
+Taking the mean yields the desired result.</p>
+<pre><code class="language-{.python"># Saved in the d2l package for later use
+def accuracy(y_hat, y):
+    if y_hat.shape[1] &gt; 1:
+        return float((y_hat.argmax(axis=1).astype('float32') == y.astype(
+            'float32')).sum())
+    else:
+        return float((y_hat.astype('int32') == y.astype('int32')).sum())
+</code></pre>
+<p>We will continue to use the variables <code>y_hat</code> and <code>y</code>
+defined in the <code>pick</code> function,
+as the predicted probability distribution and label, respectively.
+We can see that the first example's prediction category is $2$
+(the largest element of the row is 0.6 with an index of $2$),
+which is inconsistent with the actual label, $0$.
+The second example's prediction category is $2$
+(the largest element of the row is $0.5$ with an index of $2$),
+which is consistent with the actual label, $2$.
+Therefore, the classification accuracy rate for these two examples is $0.5$.</p>
+<pre><code class="language-{.python">y = np.array([0, 2])
+accuracy(y_hat, y) / len(y)
+</code></pre>
+<p>Similarly, we can evaluate the accuracy for model <code>net</code> on the dataset
+(accessed via <code>data_iter</code>).</p>
+<pre><code class="language-{.python"># Saved in the d2l package for later use
+def evaluate_accuracy(net, data_iter):
+    metric = Accumulator(2)  # num_corrected_examples, num_examples
+    for X, y in data_iter:
+        metric.add(accuracy(net(X), y), y.size)
+    return metric[0] / metric[1]
+</code></pre>
+<p>Here <code>Accumulator</code> is a utility class to accumulated sum over multiple numbers.</p>
+<pre><code class="language-{.python"># Saved in the d2l package for later use
+class Accumulator:
+    &quot;&quot;&quot;Sum a list of numbers over time.&quot;&quot;&quot;
+
+    def __init__(self, n):
+        self.data = [0.0] * n
+
+    def add(self, *args):
+        self.data = [a+float(b) for a, b in zip(self.data, args)]
+
+    def reset(self):
+        self.data = [0] * len(self.data)
+
+    def __getitem__(self, idx):
+        return self.data[idx]
+</code></pre>
+<p>Because we initialized the <code>net</code> model with random weights,
+the accuracy of this model should be close to random guessing,
+i.e., $0.1$ for $10$ classes.</p>
+<pre><code class="language-{.python">evaluate_accuracy(net, test_iter)
+</code></pre>
+<h2>Model Training</h2>
+<p>The training loop for softmax regression should look strikingly familiar
+if you read through our implementation
+of linear regression in :numref:<code>sec_linear_scratch</code>.
+Here we refactor the implementation to make it reusable.
+First, we define a function to train for one data epoch.
+Note that <code>updater</code> is general function to update the model parameters,
+which accepts the batch size as an argument.
+It can be either a wrapper of <code>d2l.sgd</code> or a Gluon trainer.</p>
+<pre><code class="language-{.python"># Saved in the d2l package for later use
+def train_epoch_ch3(net, train_iter, loss, updater):
+    metric = Accumulator(3)  # train_loss_sum, train_acc_sum, num_examples
+    if isinstance(updater, gluon.Trainer):
+        updater = updater.step
+    for X, y in train_iter:
+        # Compute gradients and update parameters
+        with autograd.record():
+            y_hat = net(X)
+            l = loss(y_hat, y)
+        l.backward()
+        updater(X.shape[0])
+        metric.add(float(l.sum()), accuracy(y_hat, y), y.size)
+    # Return training loss and training accuracy
+    return metric[0]/metric[2], metric[1]/metric[2]
+</code></pre>
+<p>Before showing the implementation of the training function,
+we define a utility class that draw data in animation.
+Again, it aims to simplify the codes in later chapters.</p>
+<pre><code class="language-{.python"># Saved in the d2l package for later use
+class Animator:
+    def __init__(self, xlabel=None, ylabel=None, legend=None, xlim=None,
+                 ylim=None, xscale='linear', yscale='linear', fmts=None,
+                 nrows=1, ncols=1, figsize=(3.5, 2.5)):
+        &quot;&quot;&quot;Incrementally plot multiple lines.&quot;&quot;&quot;
+        if legend is None:
+            legend = []
+        d2l.use_svg_display()
+        self.fig, self.axes = d2l.plt.subplots(nrows, ncols, figsize=figsize)
+        if nrows * ncols == 1:
+            self.axes = [self.axes, ]
+        # Use a lambda to capture arguments
+        self.config_axes = lambda: d2l.set_axes(
+            self.axes[0], xlabel, ylabel, xlim, ylim, xscale, yscale, legend)
+        self.X, self.Y, self.fmts = None, None, fmts
+
+    def add(self, x, y):
+        &quot;&quot;&quot;Add multiple data points into the figure.&quot;&quot;&quot;
+        if not hasattr(y, &quot;__len__&quot;):
+            y = [y]
+        n = len(y)
+        if not hasattr(x, &quot;__len__&quot;):
+            x = [x] * n
+        if not self.X:
+            self.X = [[] for _ in range(n)]
+        if not self.Y:
+            self.Y = [[] for _ in range(n)]
+        if not self.fmts:
+            self.fmts = ['-'] * n
+        for i, (a, b) in enumerate(zip(x, y)):
+            if a is not None and b is not None:
+                self.X[i].append(a)
+                self.Y[i].append(b)
+        self.axes[0].cla()
+        for x, y, fmt in zip(self.X, self.Y, self.fmts):
+            self.axes[0].plot(x, y, fmt)
+        self.config_axes()
+        display.display(self.fig)
+        display.clear_output(wait=True)
+</code></pre>
+<p>The training function then runs multiple epochs and visualize the training progress.</p>
+<pre><code class="language-{.python"># Saved in the d2l package for later use
+def train_ch3(net, train_iter, test_iter, loss, num_epochs, updater):
+    animator = Animator(xlabel='epoch', xlim=[1, num_epochs],
+                        ylim=[0.3, 0.9],
+                        legend=['train loss', 'train acc', 'test acc'])
+    for epoch in range(num_epochs):
+        train_metrics = train_epoch_ch3(net, train_iter, loss, updater)
+        test_acc = evaluate_accuracy(net, test_iter)
+        animator.add(epoch+1, train_metrics+(test_acc,))
+</code></pre>
+<p>Again, we use the minibatch stochastic gradient descent
+to optimize the loss function of the model.
+Note that the number of epochs (<code>num_epochs</code>),
+and learning rate (<code>lr</code>) are both adjustable hyper-parameters.
+By changing their values, we may be able
+to increase the classification accuracy of the model.
+In practice we will want to split our data three ways
+into training, validation, and test data,
+using the validation data to choose
+the best values of our hyperparameters.</p>
+<pre><code class="language-{.python">num_epochs, lr = 10, 0.1
+
+def updater(batch_size):
+    return d2l.sgd([W, b], lr, batch_size)
+
+train_ch3(net, train_iter, test_iter, cross_entropy, num_epochs, updater)
+</code></pre>
+<h2>Prediction</h2>
+<p>Now that training is complete,
+our model is ready to classify some images.
+Given a series of images,
+we will compare their actual labels
+(first line of text output)
+and the model predictions
+(second line of text output).</p>
+<pre><code class="language-{.python"># Saved in the d2l package for later use
+def predict_ch3(net, test_iter, n=6):
+    for X, y in test_iter:
+        break
+    trues = d2l.get_fashion_mnist_labels(y)
+    preds = d2l.get_fashion_mnist_labels(net(X).argmax(axis=1))
+    titles = [true+'\n' + pred for true, pred in zip(trues, preds)]
+    d2l.show_images(X[0:n].reshape(n, 28, 28), 1, n, titles=titles[0:n])
+
+predict_ch3(net, test_iter)
+</code></pre>
+<h2>Summary</h2>
+<p>With softmax regression, we can train models for multi-category classification.
+The training loop is very similar to that in linear regression:
+retrieve and read data, define models and loss functions,
+then train models using optimization algorithms.
+As you will soon find out, most common deep learning models
+have similar training procedures.</p>
+<h2>Exercises</h2>
+<ol>
+<li>In this section, we directly implemented the softmax function based on the mathematical definition of the softmax operation. What problems might this cause (hint: try to calculate the size of $\exp(50)$)?</li>
+<li>The function <code>cross_entropy</code> in this section is implemented according to the definition of the cross-entropy loss function.  What could be the problem with this implementation (hint: consider the domain of the logarithm)?</li>
+<li>What solutions you can think of to fix the two problems above?</li>
+<li>Is it always a good idea to return the most likely label. E.g. would you do this for medical diagnosis?</li>
+<li>Assume that we want to use softmax regression to predict the next word based on some features. What are some problems that might arise from a large vocabulary?</li>
+</ol>
+<h2><a href="https://discuss.mxnet.io/t/2336">Discussions</a></h2>
+<p><img src="static/img/qr_softmax-regression-scratch.svg" alt="" /></p>
+</div>
+</div>
+
+
+<!-- begin::footer -->
+<footer style="margin-top:100%">
+    <div class="container-fluid">
+        <div>© 2020 Primex - <a href="" target="_blank">Laborasyon</a></div>
+        <div>
+            <nav class="nav">
+                <a href="http://bootstrapmb.com/" class="nav-link">Licenses</a>
+                <a href="#" class="nav-link">Change Log</a>
+                <a href="#" class="nav-link">Get Help</a>
+            </nav>
+        </div>
+    </div>
+</footer>
+<!-- end::footer -->
+
+</div>
+<!-- end::main-content -->
+
+</div>
+<!-- end::main -->
+
+<!-- Plugin scripts -->
+<script src="static/vendors/bundle.js"></script>
+
+
+<!-- Slick -->
+<script src="static/vendors/slick/slick.min.js"></script>
+
+<!-- Chartjs -->
+<script src="static/vendors/charts/chartjs/chart.min.js"></script>
+
+<!-- Apex chart -->
+<script src="https://apexcharts.com/samples/assets/irregular-data-series.js"></script>
+<script src="static/vendors/charts/apex/apexcharts.min.js"></script>
+
+<!-- Daterangepicker -->
+<script src="static/vendors/datepicker/daterangepicker.js"></script>
+
+<!-- DataTable -->
+<script src="static/vendors/dataTable/datatables.min.js"></script>
+
+<!-- Dashboard scripts -->
+<script src="static/assets/js/examples/dashboard.js"></script>
+
+<!-- To use theme colors with Javascript -->
+<div class="colors">
+<div class="bg-primary"></div>
+<div class="bg-primary-bright"></div>
+<div class="bg-secondary"></div>
+<div class="bg-secondary-bright"></div>
+<div class="bg-info"></div>
+<div class="bg-info-bright"></div>
+<div class="bg-success"></div>
+<div class="bg-success-bright"></div>
+<div class="bg-danger"></div>
+<div class="bg-danger-bright"></div>
+<div class="bg-warning"></div>
+<div class="bg-warning-bright"></div>
+</div>
+
+<script>
+$(function () {
+$('.slick-js').slick({
+    speed: 5,
+    arrows: false,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 200,
+    responsive: [
+        {
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 3
+            }
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 2
+            }
+        },
+        {
+            breakpoint: 500,
+            settings: {
+                slidesToShow: 1
+            }
+        }
+    ]
+});
+
+$('input[name="daterangepicker"]').daterangepicker({
+    opens: 'left'
+});
+
+$('.dataTable').DataTable({
+    lengthMenu: [5, 10],
+    "columnDefs": [{
+        "targets": 7,
+        "orderable": false
+    }]
+});
+})
+</script>
+
+
+<!-- App scripts -->
+<script src="static/assets/js/app.js"></script>
+
+</body>
+</html>

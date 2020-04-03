@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>handbook of face recognition</title>
+
+    <!-- Favicon -->
+    <!-- {% load static %} -->
+    <link rel="icon" href="static/img/favicon_2.ico">
+<!-- {#    <link rel="shortcut icon" href="static/assets/media/image/favicon.png"/>#} -->
+    <!-- Plugin styles -->
+    <link rel="stylesheet" href="static/vendors/bundle.css" type="text/css">
+    <!-- Slick -->
+    <link rel="stylesheet" href="static/vendors/slick/slick.css" type="text/css">
+    <link rel="stylesheet" href="static/vendors/slick/slick-theme.css" type="text/css">
+
+    <!-- Daterangepicker -->
+    <link rel="stylesheet" href="static/vendors/datepicker/daterangepicker.css" type="text/css">
+
+    <!-- DataTable -->
+    <link rel="stylesheet" href="static/vendors/dataTable/datatables.min.css" type="text/css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="static/assets/css/app.css" type="text/css">
+    <!-- {% block script_link %} -->
+    <link rel="stylesheet" href="static/css/highlights/default.css">
+    <link rel="stylesheet" href="static/css/pygments.css"/>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <script src="static/js/jquery-2.1.3.min.js" ></script>
+    <style>
+    h1, h2, h3{color:rgb(33,150,243)!important}
+    .h1, h1 {
+        font-size: 28px;
+    }
+    p {
+        font-size: 16px;
+        letter-spacing: 0;
+        margin: 0 0 10px;
+        font-weight: 400;
+        line-height: 24px;
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+    </style>
+
+    <script type="text/x-mathjax-config">
+        window.MathJax.Hub.Config({
+            showProcessingMessages: false, //关闭js加载过程信息
+            messageStyle: "none", //不显示信息
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ], //行内公式选择符
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ], //段内公式选择符
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'], //避开某些标签
+                ignoreClass:"comment-content" //避开含该Class的标签
+            },
+            "HTML-CSS": {
+                availableFonts: ["STIX","TeX"], //可选字体
+                showMathMenu: false //关闭右击菜单显示
+            }
+        });
+        window.MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    </script>
+    <script src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" async="async" src="static/js/MathJax.js"></script>
+    <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js"></script>
+    <script data-no-instant>
+        InstantClick.on('change', function(isInitialLoad){
+            if (isInitialLoad === false) {
+                if (typeof MathJax !== 'undefined'){
+                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+                }
+            }
+        });
+        InstantClick.init();
+    </script>
+<!-- <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"> -->
+</script>
+    <!-- {% endblock %} -->
+</head>
+<body>
+
+<!-- begin::preloader-->
+<!-- {#<div class="preloader">#}
+{#    <div class="preloader-icon"></div>#}
+{#</div>#} -->
+<!-- end::preloader -->
+
+<!-- begin::header -->
+<div class="header" style="background-color: #26A69A;color: white">
+
+    <div class="header-left">
+        <div class="navigation-toggler">
+            <a href="#" data-action="navigation-toggler">
+                <i data-feather="menu"></i>
+            </a>
+        </div>
+        <div class="header-logo">
+            <a href="d2l.html">
+<!-- {#                <img class="logo" src="{% static 'img/favicon_2.ico' %}" alt="logo">#} -->
+                <img style="width: 150px;display: block" class="logo" src="static/img/d2l_nav.png" alt="logo">
+<!-- {#                <img class="logo-light" src="#" alt="light logo">#} -->
+            </a>
+            <!-- <div style="margin:0 15%;text-align: center;z-index: 0;">
+                <div class="page-title" style="text-align: center;padding: 0">
+                    <span class="logo" style="color:white;font-size: 28px;">Handbook of Face Recognition (3rd Edition)</span>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    
+    <div class="header-body" >
+        <div style="margin:auto;text-align: center;">
+            <div class="page-title" style="text-align: center;padding: 0">
+                <span class="logo" style="color:white;font-size: 28px;">Handbook of Face Recognition (3rd Edition) <a href="d2l.html">d2l</a></span> <a href="d2l.html">d2l</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- end::header -->
+
+<!-- begin::main -->
+<div id="main">
+
+    <!-- begin::navigation -->
+    <div class="navigation" style="padding: 0">
+        <div class="navigation-menu-body" style="font-size: 15px; font-weight: normal;color: #6a737d">
+            <div class="navigation-menu-group">
+                <div class="open"
+                     id="dashboards">
+                    <ul>
+                        <li>
+                            <a href="">Preface</a>
+                        </li>
+                        <li>
+                            <a href="">Installation</a>
+                        </li>
+                        <li>
+                            <a href="">Notation</a>
+                        </li>
+                        <li>
+                            <a href="">I. Introduction and Background</a>
+                            <ul>
+                                <li>
+                                    <a href="">1. Face Recognition Research and Development</a>
+                                </li>
+                                <li>
+                                    <a href="">2. The Deep Neural Networks Approach to Face Recognition</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="">II. Fundamentals of Deep Neural Networks</a>
+                            <ul>
+                                <li>
+                                    <a href="">3. Neural Network Architectures</a>
+                                </li>
+                                <li>
+                                    <a href="">4. Generative Autoencoder Networks</a>
+                                </li>
+                                <li>
+                                    <a href="">5. Generative Adversarial Networks</a>
+                                </li>
+                                <li>
+                                    <a href="">6. Transfer Learning and Domain Adaptation</a>
+                                </li>
+                                <li>
+                                    <a href="">7. Semi-supervised Learning</a>
+                                </li>
+                                <li>
+                                    <a href="">8. Neural Network Model Compression and Acceleration</a>
+                                </li>
+                                <li>
+                                    <a href="">9. Deep Learning Development Frameworks</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">III. Face Recognition by Deep Neural Networks</a>
+                            <ul>
+                                <li>
+                                    <a href="">10. Face Detection</a>
+                                </li>
+                                <li>
+                                    <a href="">11. Face Alignment</a>
+                                </li>
+                                <li>
+                                    <a href="">12. Face Parsing</a>
+                                </li>
+                                <li>
+                                    <a href="">13. 3D Face Landmarking and Morphing</a>
+                                </li>
+                                <li>
+                                    <a href="">14. Face Similarity Metric Learning</a>
+                                </li>
+                                <li>
+                                    <a href="">15. Face Feature Learning</a>
+                                </li>
+                                <li>
+                                    <a href="">16. Pose Invariant Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">17. Age Invariant Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">18. 3D Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">19. Heterogeneous Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">20. Face Spoofing Detection</a>
+                                </li>
+                                <li>
+                                    <a href="">21. Adversarial Face Perturbations</a>
+                                </li>
+                                <li>
+                                    <a href="">22. Face Expression Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">23. Face Attribute Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">24. Multi-task Learning for Face Analysis</a>
+                                </li>
+                                <li>
+                                    <a href="">25. Face Recognition in Video</a>
+                                </li>
+                                <li>
+                                    <a href="">26. Face Super-resolution</a>
+                                </li>
+                                <li>
+                                    <a href="">27. Face Data Augmentation</a>
+                                </li>
+                                <li>
+                                    <a href="">28. Face Animation</a>
+                                </li>
+                                <li>
+                                    <a href="">29. Explainable face recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">30. Bias in Face Recognition</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">IV. Face Recognition Systems</a>
+                            <ul>
+                <li>
+                    <a href="">31. Face Unlock Systems</a>
+                </li>
+                <li>
+                    <a href="">32. Large Scale Face Search Systems</a>
+                </li>
+                <li>
+                    <a href="">33. Security and Privacy Protection</a>
+                </li>
+                <li>
+                    <a href="">34. Database and Benchmarking</a>
+                </li>
+                <li>
+                    <a href="">35. Face Recognition Standards</a>
+                </li>
+                <li>
+                    <a href="">36. Government Regulations and Ethics</a>
+                </li>
+            </ul>
+                        </li>
+                        <li>
+                            <a href="">Appendix. Open Source Data and Code</a>
+                            <ul>
+                                <li>
+                                    <a href="">1. Open Source Data and Code: Overview</a>
+                                </li>
+                                <li>
+                                    <a href="">2. Fundamentals of Deep Neural Networks</a>
+                                </li>
+                                <li>
+                                    <a href="">3. Face Recognition by Deep Neural Networks</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="https://github.com/FRH-Code-Data/Appendix/blob/master/References.md">References</a>
+                            <ul>
+                                <li>
+                                    <a href="">Editors</a>
+                                </li>
+                                <li>
+                                    <a href="">Contributions</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end::navigation -->
+
+    <div class="main-content">
+        <div class="main">
+            <div class="document" role="main" style="padding: 0 15%">
+<h1>Geometry and Linear Algebraic Operations</h1>
+<p>:label:<code>sec_geometry-linear-algebraic-ops</code></p>
+<p>In :numref:<code>sec_linear-algebra</code>, we encountered the basics of linear algebra
+and saw how it could be used to express common operations for transforming our data.
+Linear algebra is one of the key mathematical pillars
+underlying much of the work that we do deep learning 
+and in machine learning more broadly.
+While :numref:<code>sec_linear-algebra</code> contained enough machinery
+to communicate the mechanics of modern deep learning models, 
+there is a lot more to the subject.
+In this section, we will go deeper,
+highlighting some geometric interpretations of linear algebra operations, 
+and introducing a few fundamental concepts, including of eigenvalues and eigenvectors.</p>
+<h2>Geometry of Vectors</h2>
+<p>First, we need to discuss the two common geometric interpretations of vectors, 
+as either points or directions in space. 
+Fundamentally, a vector is a list of numbers such as the Python list below.</p>
+<pre><code class="language-{.python">v = [1, 7, 0, 1]
+</code></pre>
+<p>Mathematicians most often write this as either a <em>column</em> or <em>row</em> vector, which is to say either as</p>
+<p>$$
+\mathbf{x} = \begin{bmatrix}1\7\0\1\end{bmatrix},
+$$</p>
+<p>or</p>
+<p>$$
+\mathbf{x}^\top = \begin{bmatrix}1 &amp; 7 &amp; 0 &amp; 1\end{bmatrix}.
+$$</p>
+<p>These often have different interpretations,
+where data points are column vectors
+and weights used to form weighted sums are row vectors.
+However, it can be beneficial to be flexible.
+Matrices are useful data structures: they allow us to organize data that have different modalities of variation. For example, rows in our matrix might correspond to different houses (data points), while columns might correspond to different attributes. This should sound familiar if you have ever used spreadsheet software or have read :numref:<code>sec_pandas</code>. Thus, although the default orientation of a single vector is a column vector, in a matrix that represents a tabular dataset, it is more conventional to treat each data point as a row vector in the matrix. And, as we will see in later chapters, this convention will enable common deep learning practices. For example, along the outermost axis of an <code>ndarray</code>, we can access or enumerate minibatches of data points, or just data points if no minibatch exists.</p>
+<p>Given a vector, the first interpretation 
+that we should give it is as a point in space. 
+In two or three dimensions, we can visualize these points 
+by using the components of the vectors to define 
+the location of the points in space compared 
+to a fixed reference called the <em>origin</em>.  This can be seen in :numref:<code>fig_grid</code>.</p>
+<p><img src="../img/GridPoints.svg" alt="An illustration of visualizing vectors as points in the plane.  The first component of the vector gives the $x$-coordinate, the second component gives the $y$-coordinate.  Higher dimensions are analogous, although much harder to visualize." />
+:label:<code>fig_grid</code></p>
+<p>This geometric point of view allows us to consider the problem on a more abstract level.
+No longer faced with some insurmountable seeming problem 
+like classifying pictures as either cats or dogs,
+we can start considering tasks abstractly 
+as collections of points in space and picturing the task 
+as discovering how to separate two distinct clusters of points.</p>
+<p>In parallel, there is a second point of view 
+that people often take of vectors: as directions in space. 
+Not only can we think of the vector $\mathbf{v} = [2,3]^\top$ 
+as the location $2$ units to the right and $3$ units up from the origin,
+we can also think of it as the direction itself 
+to take $2$ steps to the right and $3$ steps up. 
+In this way, we consider all the vectors in figure :numref:<code>fig_arrow</code> the same.</p>
+<p><img src="../img/ParVec.svg" alt="Any vector can be visualized as an arrow in the plane.  In this case, every vector drawn is a representation of the vector $(2,3)$." />
+:label:<code>fig_arrow</code></p>
+<p>One of the benefits of this shift is that
+we can make visual sense of the act of vector addition.
+In particular, we follow the directions given by one vector,
+and then follow the directions given by the other, as is seen in :numref:<code>fig_add-vec</code>.</p>
+<p><img src="../img/VecAdd.svg" alt="We can visualize vector addition by first following one vector, and then another." />
+:label:<code>fig_add-vec</code></p>
+<p>Vector subtraction has a similar interpretation.
+By considering the identity that $\mathbf{u} = \mathbf{v} + (\mathbf{u}-\mathbf{v})$,
+we see that the vector $\mathbf{u}-\mathbf{v}$ is the direction 
+that takes us from the point $\mathbf{u}$ to the point $\mathbf{v}$.</p>
+<h2>Dot Products and Angles</h2>
+<p>As we saw in :numref:<code>sec_linear-algebra</code>, 
+if we take two column vectors say $\mathbf{u}$ and $\mathbf{v}$,
+we can form their dot product by computing:</p>
+<p>$$\mathbf{u}^\top\mathbf{v} = \sum_i u_i\cdot v_i.$$
+:eqlabel:<code>eq_dot_def</code></p>
+<p>Because :eqref:<code>eq_dot_def</code> is symmetric, we will mirror the notation 
+of classical multiplication and write</p>
+<p>$$
+\mathbf{u}\cdot\mathbf{v} = \mathbf{u}^\top\mathbf{v} = \mathbf{v}^\top\mathbf{u},
+$$</p>
+<p>to highlight the fact that exchanging the order of the vectors will yield the same answer.</p>
+<p>The dot product :eqref:<code>eq_dot_def</code> also admits a geometric interpretation: it is closely related to the angle between two vectors.  Consider the angle shown in :numref:<code>fig_angle</code>.</p>
+<p><img src="../img/VecAngle.svg" alt="Between any two vectors in the plane there is a well defined angle $\theta$.  We will see this angle is intimately tied to the dot product." />
+:label:<code>fig_angle</code></p>
+<p>To start, let's consider two specific vectors:</p>
+<p>$$
+\mathbf{v} = (r,0) ; \text{and} ; \mathbf{w} = (s\cos(\theta), s \sin(\theta)).
+$$</p>
+<p>The vector $\mathbf{v}$ is length $r$ and runs parallel to the $x$-axis, 
+and the vector $\mathbf{w}$ is of length $s$ and at angle $\theta$ with the $x$-axis.<br />
+If we compute the dot product of these two vectors, we see that</p>
+<p>$$
+\mathbf{v}\cdot\mathbf{w} = rs\cos(\theta) = |\mathbf{v}||\mathbf{w}|\cos(\theta).
+$$</p>
+<p>With some simple algebraic manipulation, we can rearrange terms to obtain</p>
+<p>$$
+\theta = \arccos\left(\frac{\mathbf{v}\cdot\mathbf{w}}{|\mathbf{v}||\mathbf{w}|}\right).
+$$</p>
+<p>In short, for these two specific vectors, 
+the dot product combined with the norms tell us the angle between the two vectors. This same fact is true in general. We will not derive the expression here, however,
+if we consider writing $|\mathbf{v} - \mathbf{w}|^2$ in two ways: 
+one with the dot product, and the other geometrically using the law of cosines,
+we can obtain the full relationship. 
+Indeed, for any two vectors $\mathbf{v}$ and $\mathbf{w}$,
+the angle between the two vectors is</p>
+<p>$$\theta = \arccos\left(\frac{\mathbf{v}\cdot\mathbf{w}}{|\mathbf{v}||\mathbf{w}|}\right).$$
+:eqlabel:<code>eq_angle_forumla</code></p>
+<p>This is a nice result since nothing in the computation references two-dimensions.
+Indeed, we can use this in three or three million dimensions without issue.</p>
+<p>As a simple example, let's see how to compute the angle between a pair of vectors:</p>
+<pre><code class="language-{.python">%matplotlib inline
+import d2l
+from IPython import display
+from mxnet import gluon, np, npx
+npx.set_np()
+
+def angle(v, w):
+    return np.arccos(v.dot(w) / (np.linalg.norm(v) * np.linalg.norm(w)))
+
+angle(np.array([0, 1, 2]), np.array([2, 3, 4]))
+</code></pre>
+<p>We will not use it right now, but it is useful to know 
+that we will refer to vectors for which the angle is $\pi/2$ 
+(or equivalently $90^{\circ}$) as being <em>orthogonal</em>. 
+By examining the equation above, we see that this happens when $\theta = \pi/2$, 
+which is the same thing as $\cos(\theta) = 0$. 
+The only way this can happen is if the dot product itself is zero,
+and two vectors are orthogonal if and only if $\mathbf{v}\cdot\mathbf{w} = 0$. 
+This will prove to be a helpful formula when understanding objects geometrically.</p>
+<p>It is reasonable to ask: why is computing the angle useful?
+The answer comes in the kind of invariance we expect data to have. 
+Consider an image, and a duplicate image,
+where every pixel value is the same but $10%$ the brightness. 
+The values of the individual pixels are in general far from the original values.
+Thus, if one computed the distance between the original image and the darker one, 
+the distance can be large.<br />
+However, for most ML applications, the <em>content</em> is the same---it is still 
+an image of a cat as far as a cat/dog classifier is concerned. 
+However, if we consider the angle, it is not hard to see 
+that for any vector $\mathbf{v}$, the angle 
+between $\mathbf{v}$ and $0.1\cdot\mathbf{v}$ is zero.
+This corresponds to the fact that scaling vectors 
+keeps the same direction and just changes the length.
+The angle considers the darker image identical.</p>
+<p>Examples like this are everywhere.
+In text, we might want the topic being discussed
+to not change if we write twice as long of document that says the same thing.
+For some encoding (such as counting the number of occurrences of words in some vocabulary), this corresponds to a doubling of the vector encoding the document,
+so again we can use the angle.</p>
+<h3>Cosine Similarity</h3>
+<p>In ML contexts where the angle is employed 
+to measure the closeness of two vectors, 
+practitioners adopt the term <em>cosine similarity</em> 
+to refer to the portion 
+$$
+\cos(\theta) = \frac{\mathbf{v}\cdot\mathbf{w}}{|\mathbf{v}||\mathbf{w}|}.
+$$</p>
+<p>The cosine takes a maximum value of $1$ 
+when the two vectors point in the same direction,
+a minimum value of $-1$ when they point in opposite directions,
+and a value of $0$ when the two vectors are orthogonal.
+Note that if the components of high-dimensional vectors
+are sampled randomly with mean $0$,
+their cosine will nearly always be close to $0$.</p>
+<h2>Hyperplanes</h2>
+<p>In addition to working with vectors, another key object 
+that you must understand to go far in linear algebra 
+is the <em>hyperplane</em>, a generalization to higher dimensions
+of a line (two dimensions) or of a plane (three dimensions).
+In an $d$-dimensional vector space, a hyperplane has $d-1$ dimensions
+and divides the space into two half-spaces.</p>
+<p>Let's start with an example.
+Suppose that we have a column vector $\mathbf{w}=[2,1]^\top$. We want to know, &quot;what are the points $\mathbf{v}$ with $\mathbf{w}\cdot\mathbf{v} = 1$?&quot;
+By recalling the connection between dot products and angles above :eqref:<code>eq_angle_forumla</code>, 
+we can see that this is equivalent to 
+$$
+|\mathbf{v}||\mathbf{w}|\cos(\theta) = 1 ; \iff ; |\mathbf{v}|\cos(\theta) = \frac{1}{|\mathbf{w}|} = \frac{1}{\sqrt{5}}.
+$$</p>
+<p><img src="../img/ProjVec.svg" alt="Recalling trigonometry, we see the formula $\|\mathbf{v}\|\cos(\theta)$ is the length of the projection of the vector $\mathbf{v}$ onto the direction of $\mathbf{w}$" />
+:label:<code>fig_vector-project</code></p>
+<p>If we consider the geometric meaning of this expression,
+we see that this is equivalent to saying 
+that the length of the projection of $\mathbf{v}$ 
+onto the direction of $\mathbf{w}$ is exactly $1/|\mathbf{w}|$, as is shown in :numref:<code>fig_vector-project</code>. 
+The set of all points where this is true is a line 
+at right angles to the vector $\mathbf{w}$.
+If we wanted, we could find the equation for this line 
+and see that it is $2x + y = 1$ or equivalently $y = 1 - 2x$.</p>
+<p>If we now look at what happens when we ask about the set of points with
+$\mathbf{w}\cdot\mathbf{v} &gt; 1$ or $\mathbf{w}\cdot\mathbf{v} &lt; 1$,
+we can see that these are cases where the projections 
+are longer or shorter than $1/|\mathbf{w}|$, respectively.
+Thus, those two inequalities define either side of the line.
+In this way, we have found a way to cut our space into two halves, 
+where all the points on one side have dot product below a threshold, 
+and the other side above as we see in :numref:<code>fig_space-division</code>.</p>
+<p><img src="../img/SpaceDivision.svg" alt="If we now consider the inequality version of the expression, we see that our hyperplane (in this case: just a line) separates the space into two halves." />
+:label:<code>fig_space-division</code></p>
+<p>The story in higher dimension is much the same.
+If we now take $\mathbf{w} = [1,2,3]^\top$
+and ask about the points in three dimensions with $\mathbf{w}\cdot\mathbf{v} = 1$,
+we obtain a plane at right angles to the given vector $\mathbf{w}$.
+The two inequalities again define the two sides of the plane as is shown in :numref:<code>fig_higher-division</code>.</p>
+<p><img src="../img/SpaceDivision3D.svg" alt="Hyperplanes in any dimension separate the space into two halves." />
+:label:<code>fig_higher-division</code></p>
+<p>While our ability to visualize runs out at this point,
+nothing stops us from doing this in tens, hundreds, or billions of dimensions.
+This occurs often when thinking about machine learned models.
+For instance, we can understand linear classification models 
+like those from :numref:<code>sec_softmax</code>,
+as methods to find hyperplanes that separate the different target classes.
+In this context, such hyperplanes are often referred to as <em>decision planes</em>.
+The majority of deep learned classification models end 
+with a linear layer fed into a softmax, 
+so one can interpret the role of the deep neural network 
+to be to find a non-linear embedding such that the target classes 
+can be separated cleanly by hyperplanes.</p>
+<p>To give a hand-built example, notice that we can produce a reasonable model 
+to classify tiny images of t-shirts and trousers from the Fashion MNIST dataset 
+(seen in :numref:<code>sec_fashion_mnist</code>) 
+by just taking the vector between their means to define the decision plane
+and eyeball a crude threshold.  First we will load the data and compute the averages.</p>
+<pre><code class="language-{.python"># Load in the dataset
+train = gluon.data.vision.FashionMNIST(train=True)
+test = gluon.data.vision.FashionMNIST(train=False)
+
+X_train_0 = np.stack([x[0] for x in train if x[1] == 0]).astype(float)
+X_train_1 = np.stack([x[0] for x in train if x[1] == 1]).astype(float)
+X_test = np.stack(
+    [x[0] for x in test if x[1] == 0 or x[1] == 1]).astype(float)
+y_test = np.stack(
+    [x[1] for x in test if x[1] == 0 or x[1] == 1]).astype(float)
+
+# Compute averages
+ave_0 = np.mean(X_train_0, axis=0)
+ave_1 = np.mean(X_train_1, axis=0)
+</code></pre>
+<p>It can be informative to examine these averages in detail, so let's plot what they look like.  In this case, we see that the average indeed resembles a blurry image of a t-shirt.</p>
+<pre><code class="language-{.python"># Plot average t-shirt
+d2l.set_figsize()
+d2l.plt.imshow(ave_0.reshape(28, 28).tolist(), cmap='Greys')
+d2l.plt.show()
+</code></pre>
+<p>In the second case, we again see that the average resembles a blurry image of trousers.</p>
+<pre><code class="language-{.python"># Plot average trousers
+d2l.plt.imshow(ave_1.reshape(28, 28).tolist(), cmap='Greys')
+d2l.plt.show()
+</code></pre>
+<p>In a fully machine learned solution, we would learn the threshold from the dataset.  In this case, I simply eyeballed a threshold that looked good on the training data by hand.</p>
+<pre><code class="language-{.python"># Print test set accuracy with eyeballed threshold
+w = (ave_1 - ave_0).T
+predictions = X_test.reshape(2000, -1).dot(w.flatten()) &gt; -1500000
+
+# Accuracy
+np.mean(predictions.astype(y_test.dtype) == y_test, dtype=np.float64)
+</code></pre>
+<h2>Geometry of Linear Transformations</h2>
+<p>Through :numref:<code>sec_linear-algebra</code> and the above discussions, 
+we have a solid understanding of the geometry of vectors, lengths, and angles. 
+However, there is one important object we have omitted discussing, 
+and that is a geometric understanding of linear transformations represented by matrices.  Fully internalizing what matrices can do to transform data 
+between two potentially different high dimensional spaces takes significant practice,
+and is beyond the scope of this appendix. 
+However, we can start building up intuition in two dimensions.</p>
+<p>Suppose that we have some matrix:</p>
+<p>$$
+\mathbf{A} = \begin{bmatrix}
+a &amp; b \ c &amp; d
+\end{bmatrix}.
+$$</p>
+<p>If we want to apply this to an arbitrary vector 
+$\mathbf{v} = [x, y]^\top$, 
+we multiply and see that</p>
+<p>$$
+\begin{aligned}
+\mathbf{A}\mathbf{v} &amp; = \begin{bmatrix}a &amp; b \ c &amp; d\end{bmatrix}\begin{bmatrix}x \ y\end{bmatrix} \
+&amp; = \begin{bmatrix}ax+by\ cx+dy\end{bmatrix} \
+&amp; = x\begin{bmatrix}a \ c\end{bmatrix} + y\begin{bmatrix}b \d\end{bmatrix} \
+&amp; = x\left{\mathbf{A}\begin{bmatrix}1\0\end{bmatrix}\right} + y\left{\mathbf{A}\begin{bmatrix}0\1\end{bmatrix}\right}.
+\end{aligned}
+$$</p>
+<p>This may seem like an odd computation,
+where something clear became somewhat impenetrable.
+However, it tells us that we can write the way 
+that a matrix transforms <em>any</em> vector 
+in terms of how it transforms <em>two specific vectors</em>: 
+$[1,0]^\top$ and $[0,1]^\top$. 
+This is worth considering for a moment. 
+We have essentially reduced an infinite problem 
+(what happens to any pair of real numbers)
+to a finite one (what happens to these specific vectors).
+These vectors are an example a <em>basis</em>, 
+where we can write any vector in our space 
+as a weighted sum of these <em>basis vectors</em>.</p>
+<p>Let's draw what happens when we use the specific matrix</p>
+<p>$$
+\mathbf{A} = \begin{bmatrix}
+1 &amp; 2 \
+-1 &amp; 3
+\end{bmatrix}.
+$$</p>
+<p>If we look at the specific vector $\mathbf{v} = [2, -1]^\top$,
+we see this is $2\cdot[1,0]^\top + -1\cdot[0,1]^\top$,
+and thus we know that the matrix $A$ will send this to 
+$2(\mathbf{A}[1,0]^\top) + -1(\mathbf{A}[0,1])^\top = 2[1, -1]^\top - [2,3]^\top = [0, -5]^\top$.
+If we follow this logic through carefully,
+say by considering the grid of all integer pairs of points,
+we see that what happens is that the matrix multiplication
+can skew, rotate, and scale the grid,
+but the grid structure must remain as you see in :numref:<code>fig_grid-transform</code>.</p>
+<p><img src="../img/GridTransform.svg" alt="The matrix $\mathbf{A}$ acting on the given basis vectors.  Notice how the entire grid is transported along with it." />
+:label:<code>fig_grid-transform</code></p>
+<p>This is the most important intuitive point 
+to internalize about linear transformations represented by matrices.
+Matrices are incapable of distorting some parts of space differently than others.
+All they can do is take the original coordinates on our space 
+and skew, rotate, and scale them.</p>
+<p>Some distortions can be severe.  For instance the matrix</p>
+<p>$$
+\mathbf{B} = \begin{bmatrix}
+2 &amp; -1 \ 4 &amp; -2
+\end{bmatrix},
+$$</p>
+<p>compresses the entire two-dimensional plane down to a single line.
+Identifying and working with such transformations are the topic of a later section, 
+but geometrically we can see that this is fundamentally different 
+from the types of transformations we saw above. 
+For instance, the result from matrix $\mathbf{A}$ can be &quot;bent back&quot; to the original grid.  The results from matrix $\mathbf{B}$ cannot 
+because we will never know where the vector $[1,2]^\top$ came from---was 
+it $[1,1]^\top$ or $[0, -1]^\top$?</p>
+<p>While this picture was for a $2\times2$ matrix, 
+nothing prevents us from taking the lessons learned into higher dimensions.
+If we take similar basis vectors like $[1,0, \ldots,0]$ 
+and see where our matrix sends them, 
+we can start to get a feeling for how the matrix multiplication 
+distorts the entire space in whatever dimension space we are dealing with.</p>
+<h2>Linear Dependence</h2>
+<p>Consider again the matrix</p>
+<p>$$
+\mathbf{B} = \begin{bmatrix}
+2 &amp; -1 \ 4 &amp; -2
+\end{bmatrix}.
+$$</p>
+<p>This compresses the entire plane down to live on the single line $y = 2x$.
+The question now arises: is there some way we can detect this
+just looking at the matrix itself?
+The answer is that indeed we can.
+Let's take $\mathbf{b}_1 = [2,4]^\top$ and $\mathbf{b}_2 = [-1, -2]^\top$ 
+be the two columns of $\mathbf{B}$.
+Remember that we can write everything transformed by the matrix $\mathbf{B}$
+as a weighted sum of the columns of the matrix: 
+like $a_1\mathbf{b}_1 + a_2\mathbf{b}_2$.
+We call this a <em>linear combination</em>. 
+The fact that $\mathbf{b}_1 = -2\cdot\mathbf{b}_2$ 
+means that we can write any linear combination of those two columns 
+entirely in terms of say $\mathbf{b}_2$ since</p>
+<p>$$
+a_1\mathbf{b}_1 + a_2\mathbf{b}_2 = -2a_1\mathbf{b}_2 + a_2\mathbf{b}_2 = (a_2-2a_1)\mathbf{b}_2.
+$$</p>
+<p>This means that one of the columns is, in a sense, redundant 
+because it does not define a unique direction in space. 
+This should not surprise us too much 
+since we already saw that this matrix 
+collapses the entire plane down into a single line.
+Moreover, we see that the linear dependence 
+$\mathbf{b}_1 = -2\cdot\mathbf{b}_2$ captures this. 
+To make this more symmetrical between the two vectors, we will write this as</p>
+<p>$$
+\mathbf{b}_1  + 2\cdot\mathbf{b}_2 = 0.
+$$</p>
+<p>In general, we will say that a collection of vectors
+$\mathbf{v}_1, \ldots \mathbf{v}_k$ are <em>linearly dependent</em> 
+if there exist coefficients $a_1, \ldots, a_k$ <em>not all equal to zero</em> so that</p>
+<p>$$
+\sum_{i=1}^k a_i\mathbf{v_i} = 0.
+$$</p>
+<p>In this case, we can solve for one of the vectors 
+in terms of some combination of the others, 
+and effectively render it redundant.
+Thus, a linear dependence in the columns of a matrix 
+is a witness to the fact that our matrix 
+is compressing the space down to some lower dimension.
+If there is no linear dependence we say the vectors are <em>linearly independent</em>. 
+If the columns of a matrix are linearly independent, 
+no compression occurs and the operation can be undone.</p>
+<h2>Rank</h2>
+<p>If we have a general $n\times m$ matrix,
+it is reasonable to ask what dimension space the matrix maps into.
+A concept known as the <em>rank</em> will be our answer.
+In the previous section, we noted that a linear dependence
+bears witness to compression of space into a lower dimension 
+and so we will be able to use this to define the notion of rank. 
+In particular, the rank of a matrix $\mathbf{A}$ 
+is the largest number of linearly independent columns 
+amongst all subsets of columns. For example, the matrix</p>
+<p>$$
+\mathbf{B} = \begin{bmatrix}
+2 &amp; 4 \ -1 &amp; -2
+\end{bmatrix},
+$$</p>
+<p>has $\mathrm{rank}(B)=1$, since the two columns are linearly dependent,
+but either column by itself is not linearly dependent.
+For a more challenging example, we can consider</p>
+<p>$$
+\mathbf{C} = \begin{bmatrix}
+1&amp; 3 &amp; 0 &amp; -1 &amp; 0 \
+-1 &amp; 0 &amp; 1 &amp; 1 &amp; -1 \
+0 &amp; 3 &amp; 1 &amp; 0 &amp; -1 \
+2 &amp; 3 &amp; -1 &amp; -2 &amp; 1
+\end{bmatrix},
+$$</p>
+<p>and show that $\mathbf{C}$ has rank two since, for instance,
+the first two columns are linearly independent,
+however any of the four collections of three columns are dependent.</p>
+<p>This procedure, as described, is very inefficient. 
+It requires looking at every subset of the columns of our given matrix,
+and thus is potentially exponential in the number of columns.
+Later we will see a more computationally efficient way 
+to compute the rank of a matrix, but for now, 
+this is sufficient to see that the concept 
+is well defined and understand the meaning.</p>
+<h2>Invertibility</h2>
+<p>We have seen above that multiplication by a matrix with linearly dependent columns
+cannot be undone, i.e., there is no inverse operation that can always recover the input.  However, multiplication by a full-rank matrix 
+(i.e., some $\mathbf{A}$ that is $n \times n$ matrix with rank $n$), 
+we should always be able to undo it.  Consider the matrix</p>
+<p>$$
+\mathbf{I} = \begin{bmatrix}
+1 &amp; 0 &amp; \cdots &amp; 0 \
+0 &amp; 1 &amp; \cdots &amp; 0 \
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \
+0 &amp; 0 &amp; \cdots &amp; 1 
+\end{bmatrix}.
+$$</p>
+<p>which is the matrix with ones along the diagonal, and zeros elsewhere. 
+We call this the <em>identity</em> matrix. 
+It is the matrix which leaves our data unchanged when applied. 
+To find a matrix which undoes what our matrix $\mathbf{A}$ has done,
+we want to find a matrix $\mathbf{A}^{-1}$ such that</p>
+<p>$$
+\mathbf{A}^{-1}\mathbf{A} = \mathbf{A}\mathbf{A}^{-1} =  \mathbf{I}.
+$$</p>
+<p>If we look at this as a system, we have $n \times n$ unknowns 
+(the entries of $\mathbf{A}^{-1}$) and $n \times n$ equations 
+(the equality that needs to hold between every entry of the product $\mathbf{A}^{-1}\mathbf{A}$ and every entry of $\mathbf{I}$) 
+so we should generically expect a solution to exist. 
+Indeed, in the next section we will see a quantity called the <em>determinant</em>,
+which has the property that as long as the determinant is not zero, we can find a solution.  We call such a matrix $\mathbf{A}^{-1}$ the <em>inverse</em> matrix.
+As an example, if $\mathbf{A}$ is the general $2 \times 2$ matrix</p>
+<p>$$
+\mathbf{A} = \begin{bmatrix}
+a &amp; b \
+c &amp; d 
+\end{bmatrix},
+$$</p>
+<p>then we can see that the inverse is</p>
+<p>$$
+ \frac{1}{ad-bc}  \begin{bmatrix}
+d &amp; -b \
+-c &amp; a 
+\end{bmatrix}.
+$$</p>
+<p>We can test to see this by seeing that multiplying 
+by the inverse given by the formula above works in practice.</p>
+<pre><code class="language-{.python">M = np.array([[1, 2], [1, 4]])
+M_inv = np.array([[2, -1], [-0.5, 0.5]])
+M_inv.dot(M)
+</code></pre>
+<h3>Numerical Issues</h3>
+<p>While the inverse of a matrix is useful in theory, 
+we must say that most of the time we do not wish 
+to <em>use</em> the matrix inverse to solve a problem in practice. 
+In general, there are far more numerically stable algorithms 
+for solving linear equations like</p>
+<p>$$
+\mathbf{A}\mathbf{x} = \mathbf{b},
+$$</p>
+<p>than computing the inverse and multiplying to get</p>
+<p>$$
+\mathbf{x} = \mathbf{A}^{-1}\mathbf{b}.
+$$</p>
+<p>Just as division by a small number can lead to numerical instability,
+so can inversion of a matrix which is close to having low rank.</p>
+<p>Moreover, it is common that the matrix $\mathbf{A}$ is <em>sparse</em>, 
+which is to say that it contains only a small number of non-zero values. 
+If we were to explore examples, we would see 
+that this does not mean the inverse is sparse. 
+Even if $\mathbf{A}$ was a $1$ million by $1$ million matrix 
+with only $5$ million non-zero entries 
+(and thus we need only store those $5$ million), 
+the inverse will typically have almost every entry non-negative,
+requiring us to store all $1\text{M}^2$ entries---that is $1$ trillion entries!</p>
+<p>While we do not have time to dive all the way into the thorny numerical issues 
+frequently encountered when working with linear algebra, 
+we want to provide you with some intuition about when to proceed with caution, 
+and generally avoiding inversion in practice is a good rule of thumb.</p>
+<h2>Determinant</h2>
+<p>The geometric view of linear algebra gives an intuitive way 
+to interpret a a fundamental quantity known as the <em>determinant</em>.
+Consider the grid image from before, but now with a highlighted region (:numref:<code>fig_grid-filled</code>).</p>
+<p><img src="../img/GridTransformFilled.svg" alt="The matrix $\mathbf{A}$ again distorting the grid.  This time, I want to draw particular attention to what happens to the highlighted square." />
+:label:<code>fig_grid-filled</code></p>
+<p>Look at the highlighted square.  This is a square with edges given
+by $(0, 1)$ and $(1, 0)$ and thus it has area one.
+After $\mathbf{A}$ transforms this square,
+we see that it becomes a parallelogram.
+There is no reason this parallelogram should have the same area
+that we started with, and indeed in the specific case shown here of</p>
+<p>$$
+\mathbf{A} = \begin{bmatrix}
+1 &amp; 2 \
+-1 &amp; 3
+\end{bmatrix},
+$$</p>
+<p>it is an exercise in coordinate geometry to compute 
+the area of this parallelogram and obtain that the area is $5$.</p>
+<p>In general, if we have a matrix</p>
+<p>$$
+\mathbf{A} = \begin{bmatrix}
+a &amp; b \
+c &amp; d
+\end{bmatrix},
+$$</p>
+<p>we can see with some computation that the area 
+of the resulting parallelogram is $ad-bc$.
+This area is referred to as the <em>determinant</em>.</p>
+<p>Let's check this quickly with some example code.</p>
+<pre><code class="language-{.python">import numpy as np
+np.linalg.det(np.array([[1, -1], [2, 3]]))
+</code></pre>
+<p>The eagle-eyed amongst us will notice 
+that this expression can be zero or even negative.
+For the negative term, this is a matter of convention 
+taken generally in mathematics: 
+if the matrix flips the figure, 
+we say the area is negated.
+Let's see now that when the determinant is zero, we learn more.</p>
+<p>Let's consider</p>
+<p>$$
+\mathbf{B} = \begin{bmatrix}
+2 &amp; 4 \ -1 &amp; -2
+\end{bmatrix}.
+$$</p>
+<p>If we compute the determinant of this matrix,
+we get $2\cdot(-2 ) - 4\cdot(-1) = 0$.
+Given our understanding above, this makes sense. 
+$\mathbf{B}$ compresses the square from the original image 
+down to a line segment, which has zero area.
+And indeed, being compressed into a lower dimensional space 
+is the only way to have zero area after the transformation.
+Thus we see the following result is true:
+a matrix $A$ is invertible if and only if 
+the determinant is not equal to zero.</p>
+<p>As a final comment, imagine that we have any figure drawn on the plane.
+Thinking like computer scientists, we can decompose 
+that figure into a collection of little squares 
+so that the area of the figure is in essence 
+just the number of squares in the decomposition.
+If we now transform that figure by a matrix,
+we send each of these squares to parallelograms,
+each one of which has area given by the determinant.
+We see that for any figure, the determinant gives the (signed) number 
+that a matrix scales the area of any figure.</p>
+<p>Computing determinants for larger matrices can be laborious,
+but the  intuition is the same.
+The determinant remains the factor 
+that $n\times n$ matrices scale $n$-dimensional volumes.</p>
+<h2>Tensors and Common Linear Algebra Operations</h2>
+<p>In :numref:<code>sec_linear-algebra</code> the concept of tensors was introduced.
+In this section, we will dive more deeply into tensor contractions 
+(the tensor equivalent of matrix multiplication),
+and see how it can provide a unified view 
+on a number of matrix and vector operations.</p>
+<p>With matrices and vectors we knew how to multiply them to transform data.
+We need to have a similar definition for tensors if they are to be useful to us.
+Think about matrix multiplication:</p>
+<p>$$
+\mathbf{C} = \mathbf{A}\mathbf{B},
+$$</p>
+<p>or equivalently</p>
+<p>$$ c_{i, j} = \sum_{k} a_{i, k}b_{k, j}.$$</p>
+<p>This pattern is one we can repeat for tensors.
+For tensors, there is no one case of what 
+to sum over that can be universally chosen,
+so we need specify exactly which indices we want to sum over.
+For instance we could consider</p>
+<p>$$
+y_{il} = \sum_{jk} x_{ijkl}a_{jk}.
+$$</p>
+<p>Such a transformation is called a <em>tensor contraction</em>.
+It can represent a far more flexible family of transformations
+that matrix multiplication alone.</p>
+<p>As a often-used notational simplification, 
+we can notice that the sum is over exactly those indices
+that occur more than once in the expression,
+thus people often work with <em>Einstein notation</em>,
+where the summation is implicitly taken over all repeated indices.
+This gives the compact expression:</p>
+<p>$$
+y_{il} = x_{ijkl}a_{jk}.
+$$</p>
+<h3>Common Examples from Linear Algebra</h3>
+<p>Let's see how many of the linear algebraic definitions 
+we have seen before can be expressed in this compressed tensor notation:</p>
+<ul>
+<li>$\mathbf{v} \cdot \mathbf{w} = \sum_i v_iw_i$</li>
+<li>$|\mathbf{v}|_2^{2} = \sum_i v_iv_i$</li>
+<li>$(\mathbf{A}\mathbf{v})<em>i = \sum_j a</em>{ij}v_j$</li>
+<li>$(\mathbf{A}\mathbf{B})<em>{ik} = \sum_j a_{ij}b</em>{jk}$</li>
+<li>$\mathrm{tr}(\mathbf{A}) = \sum_i a_{ii}$</li>
+</ul>
+<p>In this way, we can replace a myriad of specialized notations with short tensor expressions.</p>
+<h3>Expressing in Code</h3>
+<p>Tensors may flexibly be operated on in code as well.
+As seen in :numref:<code>sec_linear-algebra</code>, 
+we can create tensors as is shown below.</p>
+<pre><code class="language-{.python"># Define tensors
+B = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
+A = np.array([[1, 2], [3, 4]])
+v = np.array([1, 2])
+
+# Print out the shapes
+A.shape, B.shape, v.shape
+</code></pre>
+<p>Einstein summation has been implemented directly  via <code>np.einsum</code>. 
+The indices that occurs in the Einstein summation can be passed as a string, 
+followed by the tensors that are being acted upon.
+For instance, to implement matrix multiplication,
+we can consider the Einstein summation seen above
+($\mathbf{A}\mathbf{v} = a_{ij}v_j$)
+and strip out the indices themselves to get the implementation:</p>
+<pre><code class="language-{.python"># Reimplement matrix multiplication
+np.einsum(&quot;ij, j -&gt; i&quot;, A, v), A.dot(v)
+</code></pre>
+<p>This is a highly flexible notation.
+For instance if we want to compute 
+what would be traditionally written as</p>
+<p>$$
+c_{kl} = \sum_{ij} \mathbf{B}<em>{ijk}\mathbf{A}</em>{il}v_j.
+$$</p>
+<p>it can be implemented via Einstein summation as:</p>
+<pre><code class="language-{.python">np.einsum(&quot;ijk, il, j -&gt; kl&quot;, B, A, v)
+</code></pre>
+<p>This notation is readable and efficient for humans,
+however bulky if for whatever reason 
+we need to generate a tensor contraction programmatically.
+For this reason, <code>einsum</code> provides an alternative notation 
+by providing integer indices for each tensor.
+For example, the same tensor contraction can also be written as:</p>
+<pre><code class="language-{.python">np.einsum(B, [0, 1, 2], A, [0, 3], v, [1], [2, 3])
+</code></pre>
+<p>Either notation allows for concise and efficient representation of tensor contractions in code.</p>
+<h2>Summary</h2>
+<ul>
+<li>Vectors can be interpreted geometrically as either points or directions in space.</li>
+<li>Dot products define the notion of angle to arbitrarily high-dimensional spaces.</li>
+<li>Hyperplanes are high-dimensional generalizations of lines and planes.  They can be used to define decision planes that are often used as the last step in a classification task.</li>
+<li>Matrix multiplication can be geometrically interpreted as uniform distortions of the underlying coordinates. They represent a very restricted, but mathematically clean, way to transform vectors.</li>
+<li>Linear dependence is a way to tell when a collection of vectors are in a lower dimensional space than we would expect (say you have $3$ vectors living in a $2$-dimensional space). The rank of a matrix is the size of the largest subset of its columns that are linearly independent.</li>
+<li>When a matrix's inverse is defined, matrix inversion allows us to find another matrix that undoes the action of the first. Matrix inversion is useful in theory, but requires care in practice owing to numerical instability.</li>
+<li>Determinants allow us to measure how much a matrix expands or contracts a space. A nonzero determinant implies an invertible (non-singular) matrix and a zero-valued determinant means that the matrix is non-invertible (singular).</li>
+<li>Tensor contractions and Einstein summation provide for a neat and clean notation for expressing many of the computations that are seen in machine learning.</li>
+</ul>
+<h2>Exercises</h2>
+<ol>
+<li>What is the angle between</li>
+</ol>
+<p>$$
+\vec v_1 = \begin{bmatrix}
+1 \ 0 \ -1 \ 2
+\end{bmatrix}, \qquad \vec v_2 = \begin{bmatrix}
+3 \ 1 \ 0 \ 1
+\end{bmatrix}?
+$$
+2. True or false: $\begin{bmatrix}1 &amp; 2\0&amp;1\end{bmatrix}$ and $\begin{bmatrix}1 &amp; -2\0&amp;1\end{bmatrix}$ are inverses of one another?
+3. Suppose that we draw a shape in the plane with area $100\mathrm{m}^2$.  What is the area after transforming the figure by the matrix
+$$
+\begin{bmatrix}
+2 &amp; 3\
+1 &amp; 2
+\end{bmatrix}.
+$$
+4. Which of the following sets of vectors are linearly independent?</p>
+<ul>
+<li>$\left{\begin{pmatrix}1\0\-1\end{pmatrix}, \begin{pmatrix}2\1\-1\end{pmatrix}, \begin{pmatrix}3\1\1\end{pmatrix}\right}$</li>
+<li>$\left{\begin{pmatrix}3\1\1\end{pmatrix}, \begin{pmatrix}1\1\1\end{pmatrix}, \begin{pmatrix}0\0\0\end{pmatrix}\right}$</li>
+<li>$\left{\begin{pmatrix}1\1\0\end{pmatrix}, \begin{pmatrix}0\1\-1\end{pmatrix}, \begin{pmatrix}1\0\1\end{pmatrix}\right}$</li>
+</ul>
+<ol start="5">
+<li>Suppose that you have a matrix written as $A = \begin{bmatrix}c\d\end{bmatrix}\cdot\begin{bmatrix}a &amp; b\end{bmatrix}$ for some choice of values $a, b, c$, and $d$.  True or false: the determinant of such a matrix is always $0$?</li>
+<li>The vectors $e_1 = \begin{bmatrix}1\0\end{bmatrix}$ and $e_2 = \begin{bmatrix}0\1\end{bmatrix}$ are orthogonal.  What is the condition on a matrix $A$ so that $Ae_1$ and $Ae_2$ are orthogonal?</li>
+<li>How can you write $\mathrm{tr}(\mathbf{A}^4)$ in Einstein notation for an arbitrary matrix $A$?</li>
+</ol>
+<h2><a href="https://discuss.mxnet.io/t/5147">Discussions</a></h2>
+<p><img src="../img/qr_geometry-linear-algebraic-ops.svg" alt="" /></p>
+</div>
+</div>
+
+
+<!-- begin::footer -->
+<footer style="margin-top:100%">
+    <div class="container-fluid">
+        <div>© 2020 Primex - <a href="" target="_blank">Laborasyon</a></div>
+        <div>
+            <nav class="nav">
+                <a href="http://bootstrapmb.com/" class="nav-link">Licenses</a>
+                <a href="#" class="nav-link">Change Log</a>
+                <a href="#" class="nav-link">Get Help</a>
+            </nav>
+        </div>
+    </div>
+</footer>
+<!-- end::footer -->
+
+</div>
+<!-- end::main-content -->
+
+</div>
+<!-- end::main -->
+
+<!-- Plugin scripts -->
+<script src="static/vendors/bundle.js"></script>
+
+
+<!-- Slick -->
+<script src="static/vendors/slick/slick.min.js"></script>
+
+<!-- Chartjs -->
+<script src="static/vendors/charts/chartjs/chart.min.js"></script>
+
+<!-- Apex chart -->
+<script src="https://apexcharts.com/samples/assets/irregular-data-series.js"></script>
+<script src="static/vendors/charts/apex/apexcharts.min.js"></script>
+
+<!-- Daterangepicker -->
+<script src="static/vendors/datepicker/daterangepicker.js"></script>
+
+<!-- DataTable -->
+<script src="static/vendors/dataTable/datatables.min.js"></script>
+
+<!-- Dashboard scripts -->
+<script src="static/assets/js/examples/dashboard.js"></script>
+
+<!-- To use theme colors with Javascript -->
+<div class="colors">
+<div class="bg-primary"></div>
+<div class="bg-primary-bright"></div>
+<div class="bg-secondary"></div>
+<div class="bg-secondary-bright"></div>
+<div class="bg-info"></div>
+<div class="bg-info-bright"></div>
+<div class="bg-success"></div>
+<div class="bg-success-bright"></div>
+<div class="bg-danger"></div>
+<div class="bg-danger-bright"></div>
+<div class="bg-warning"></div>
+<div class="bg-warning-bright"></div>
+</div>
+
+<script>
+$(function () {
+$('.slick-js').slick({
+    speed: 5,
+    arrows: false,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 200,
+    responsive: [
+        {
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 3
+            }
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 2
+            }
+        },
+        {
+            breakpoint: 500,
+            settings: {
+                slidesToShow: 1
+            }
+        }
+    ]
+});
+
+$('input[name="daterangepicker"]').daterangepicker({
+    opens: 'left'
+});
+
+$('.dataTable').DataTable({
+    lengthMenu: [5, 10],
+    "columnDefs": [{
+        "targets": 7,
+        "orderable": false
+    }]
+});
+})
+</script>
+
+
+<!-- App scripts -->
+<script src="static/assets/js/app.js"></script>
+
+</body>
+</html>

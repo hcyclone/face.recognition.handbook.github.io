@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>handbook of face recognition</title>
+
+    <!-- Favicon -->
+    <!-- {% load static %} -->
+    <link rel="icon" href="static/img/favicon_2.ico">
+<!-- {#    <link rel="shortcut icon" href="static/assets/media/image/favicon.png"/>#} -->
+    <!-- Plugin styles -->
+    <link rel="stylesheet" href="static/vendors/bundle.css" type="text/css">
+    <!-- Slick -->
+    <link rel="stylesheet" href="static/vendors/slick/slick.css" type="text/css">
+    <link rel="stylesheet" href="static/vendors/slick/slick-theme.css" type="text/css">
+
+    <!-- Daterangepicker -->
+    <link rel="stylesheet" href="static/vendors/datepicker/daterangepicker.css" type="text/css">
+
+    <!-- DataTable -->
+    <link rel="stylesheet" href="static/vendors/dataTable/datatables.min.css" type="text/css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="static/assets/css/app.css" type="text/css">
+    <!-- {% block script_link %} -->
+    <link rel="stylesheet" href="static/css/highlights/default.css">
+    <link rel="stylesheet" href="static/css/pygments.css"/>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <script src="static/js/jquery-2.1.3.min.js" ></script>
+    <style>
+    h1, h2, h3{color:rgb(33,150,243)!important}
+    .h1, h1 {
+        font-size: 28px;
+    }
+    p {
+        font-size: 16px;
+        letter-spacing: 0;
+        margin: 0 0 10px;
+        font-weight: 400;
+        line-height: 24px;
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+    </style>
+
+    <script type="text/x-mathjax-config">
+        window.MathJax.Hub.Config({
+            showProcessingMessages: false, //关闭js加载过程信息
+            messageStyle: "none", //不显示信息
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ], //行内公式选择符
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ], //段内公式选择符
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'], //避开某些标签
+                ignoreClass:"comment-content" //避开含该Class的标签
+            },
+            "HTML-CSS": {
+                availableFonts: ["STIX","TeX"], //可选字体
+                showMathMenu: false //关闭右击菜单显示
+            }
+        });
+        window.MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    </script>
+    <script src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" async="async" src="static/js/MathJax.js"></script>
+    <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js"></script>
+    <script data-no-instant>
+        InstantClick.on('change', function(isInitialLoad){
+            if (isInitialLoad === false) {
+                if (typeof MathJax !== 'undefined'){
+                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+                }
+            }
+        });
+        InstantClick.init();
+    </script>
+<!-- <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"> -->
+</script>
+    <!-- {% endblock %} -->
+</head>
+<body>
+
+<!-- begin::preloader-->
+<!-- {#<div class="preloader">#}
+{#    <div class="preloader-icon"></div>#}
+{#</div>#} -->
+<!-- end::preloader -->
+
+<!-- begin::header -->
+<div class="header" style="background-color: #26A69A;color: white">
+
+    <div class="header-left">
+        <div class="navigation-toggler">
+            <a href="#" data-action="navigation-toggler">
+                <i data-feather="menu"></i>
+            </a>
+        </div>
+        <div class="header-logo">
+            <a href="d2l.html">
+<!-- {#                <img class="logo" src="{% static 'img/favicon_2.ico' %}" alt="logo">#} -->
+                <img style="width: 150px;display: block" class="logo" src="static/img/d2l_nav.png" alt="logo">
+<!-- {#                <img class="logo-light" src="#" alt="light logo">#} -->
+            </a>
+            <!-- <div style="margin:0 15%;text-align: center;z-index: 0;">
+                <div class="page-title" style="text-align: center;padding: 0">
+                    <span class="logo" style="color:white;font-size: 28px;">Handbook of Face Recognition (3rd Edition)</span>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    
+    <div class="header-body" >
+        <div style="margin:auto;text-align: center;">
+            <div class="page-title" style="text-align: center;padding: 0">
+                <span class="logo" style="color:white;font-size: 28px;">Handbook of Face Recognition (3rd Edition) <a href="d2l.html">d2l</a></span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- end::header -->
+
+<!-- begin::main -->
+<div id="main">
+
+    <!-- begin::navigation -->
+    <div class="navigation" style="padding: 0">
+        <div class="navigation-menu-body" style="font-size: 15px; font-weight: normal;color: #6a737d">
+            <div class="navigation-menu-group">
+                <div class="open"
+                     id="dashboards">
+                    <ul>
+                        <li>
+                            <a href="">Preface</a>
+                        </li>
+                        <li>
+                            <a href="">Installation</a>
+                        </li>
+                        <li>
+                            <a href="">Notation</a>
+                        </li>
+                        <li>
+                            <a href="">I. Introduction and Background</a>
+                            <ul>
+                                <li>
+                                    <a href="">1. Face Recognition Research and Development</a>
+                                </li>
+                                <li>
+                                    <a href="">2. The Deep Neural Networks Approach to Face Recognition</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="">II. Fundamentals of Deep Neural Networks</a>
+                            <ul>
+                                <li>
+                                    <a href="">3. Neural Network Architectures</a>
+                                </li>
+                                <li>
+                                    <a href="">4. Generative Autoencoder Networks</a>
+                                </li>
+                                <li>
+                                    <a href="">5. Generative Adversarial Networks</a>
+                                </li>
+                                <li>
+                                    <a href="">6. Transfer Learning and Domain Adaptation</a>
+                                </li>
+                                <li>
+                                    <a href="">7. Semi-supervised Learning</a>
+                                </li>
+                                <li>
+                                    <a href="">8. Neural Network Model Compression and Acceleration</a>
+                                </li>
+                                <li>
+                                    <a href="">9. Deep Learning Development Frameworks</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">III. Face Recognition by Deep Neural Networks</a>
+                            <ul>
+                                <li>
+                                    <a href="">10. Face Detection</a>
+                                </li>
+                                <li>
+                                    <a href="">11. Face Alignment</a>
+                                </li>
+                                <li>
+                                    <a href="">12. Face Parsing</a>
+                                </li>
+                                <li>
+                                    <a href="">13. 3D Face Landmarking and Morphing</a>
+                                </li>
+                                <li>
+                                    <a href="">14. Face Similarity Metric Learning</a>
+                                </li>
+                                <li>
+                                    <a href="">15. Face Feature Learning</a>
+                                </li>
+                                <li>
+                                    <a href="">16. Pose Invariant Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">17. Age Invariant Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">18. 3D Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">19. Heterogeneous Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">20. Face Spoofing Detection</a>
+                                </li>
+                                <li>
+                                    <a href="">21. Adversarial Face Perturbations</a>
+                                </li>
+                                <li>
+                                    <a href="">22. Face Expression Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">23. Face Attribute Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">24. Multi-task Learning for Face Analysis</a>
+                                </li>
+                                <li>
+                                    <a href="">25. Face Recognition in Video</a>
+                                </li>
+                                <li>
+                                    <a href="">26. Face Super-resolution</a>
+                                </li>
+                                <li>
+                                    <a href="">27. Face Data Augmentation</a>
+                                </li>
+                                <li>
+                                    <a href="">28. Face Animation</a>
+                                </li>
+                                <li>
+                                    <a href="">29. Explainable face recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">30. Bias in Face Recognition</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">IV. Face Recognition Systems</a>
+                            <ul>
+                <li>
+                    <a href="">31. Face Unlock Systems</a>
+                </li>
+                <li>
+                    <a href="">32. Large Scale Face Search Systems</a>
+                </li>
+                <li>
+                    <a href="">33. Security and Privacy Protection</a>
+                </li>
+                <li>
+                    <a href="">34. Database and Benchmarking</a>
+                </li>
+                <li>
+                    <a href="">35. Face Recognition Standards</a>
+                </li>
+                <li>
+                    <a href="">36. Government Regulations and Ethics</a>
+                </li>
+            </ul>
+                        </li>
+                        <li>
+                            <a href="">Appendix. Open Source Data and Code</a>
+                            <ul>
+                                <li>
+                                    <a href="">1. Open Source Data and Code: Overview</a>
+                                </li>
+                                <li>
+                                    <a href="">2. Fundamentals of Deep Neural Networks</a>
+                                </li>
+                                <li>
+                                    <a href="">3. Face Recognition by Deep Neural Networks</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="https://github.com/FRH-Code-Data/Appendix/blob/master/References.md">References</a>
+                            <ul>
+                                <li>
+                                    <a href="">Editors</a>
+                                </li>
+                                <li>
+                                    <a href="">Contributions</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end::navigation -->
+
+    <div class="main-content">
+        <div class="main">
+            <div class="document" role="main" style="padding: 0 15%">
+<h1>Distributions</h1>
+<p>:label:<code>sec_distributions</code></p>
+<p>Now that we have learned how to work with probability in both the discrete and the continuous setting, let's get to know some of the common distributions encountered.  Depending on the area of machine learning, we may need to be familiar with vastly more of these, or for some areas of deep learning potentially none at all.  This is, however, a good basic list to be familiar with.  Let's first import some common libraries.</p>
+<pre><code class="language-{.python">%matplotlib inline
+import d2l
+from IPython import display
+from math import erf, factorial
+import numpy as np
+</code></pre>
+<h2>Bernoulli</h2>
+<p>This is the simplest random variable usually encountered.  This random variable encodes a coin flip which comes up $1$ with probability $p$ and $0$ with probability $1-p$.  If we have a random variable $X$ with this distribution, we will write</p>
+<p>$
+X \sim \mathrm{Bernoulli}(p).
+$</p>
+<p>The cumulative distribution function is</p>
+<p>$F(x) = \begin{cases} 0 &amp; x &lt; 0, \ 1-p &amp; 0 \le x &lt; 1, \ 1 &amp; x &gt;= 1 . \end{cases}$
+:eqlabel:<code>eq_bernoulli_cdf</code></p>
+<p>The probability mass function is plotted below.</p>
+<pre><code class="language-{.python">p = 0.3
+
+d2l.set_figsize()
+d2l.plt.stem([0, 1], [1 - p, p], use_line_collection=True)
+d2l.plt.xlabel('x')
+d2l.plt.ylabel('p.m.f.')
+d2l.plt.show()
+</code></pre>
+<p>Now, let's plot the cumulative distribution function :eqref:<code>eq_bernoulli_cdf</code>.</p>
+<pre><code class="language-{.python">x = np.arange(-1, 2, 0.01)
+
+def F(x):
+    return 0 if x &lt; 0 else 1 if x &gt; 1 else 1 - p
+
+d2l.plot(x, np.array([F(y) for y in x]), 'x', 'c.d.f.')
+</code></pre>
+<p>If $X \sim \mathrm{Bernoulli}(p)$, then:</p>
+<ul>
+<li>$\mu_X = p$,</li>
+<li>$\sigma_X^2 = p(1-p)$.</li>
+</ul>
+<p>We can sample an array of arbitrary shape from a Bernoulli random variable as follows.</p>
+<pre><code class="language-{.python">1*(np.random.rand(10, 10) &lt; p)
+</code></pre>
+<h2>Discrete Uniform</h2>
+<p>The next commonly encountered random variable encountered is a discrete uniform.  For our discussion here, we will assume that it is supported on the integers ${1, 2, \ldots, n}$, however any other set of values can be freely chosen.  The meaning of the word <em>uniform</em> in this context is that every possible value is equally likely.  The probability for each value $i \in {1, 2, 3, \ldots, n}$ is $p_i = \frac{1}{n}$.  We will denote a random variable $X$ with this distribution as</p>
+<p>$
+X \sim \mathrm{Uniform}(n).
+$</p>
+<p>The cumulative distribution function is</p>
+<p>$F(x) = \begin{cases} 0 &amp; x &lt; 1, \ \frac{k}{n} &amp; k \le x &lt; k+1 \text{ with } 1 \le k &lt; n, \ 1 &amp; x &gt;= n . \end{cases}$
+:eqlabel:<code>eq_discrete_uniform_cdf</code></p>
+<p>Let's first plot the probability mass function.</p>
+<pre><code class="language-{.python">n = 5
+
+d2l.plt.stem([i+1 for i in range(n)], n*[1 / n], use_line_collection=True)
+d2l.plt.xlabel('x')
+d2l.plt.ylabel('p.m.f.')
+d2l.plt.show()
+</code></pre>
+<p>Now, let's plot the cumulative distribution function :eqref:<code>eq_discrete_uniform_cdf</code>.</p>
+<pre><code class="language-{.python">x = np.arange(-1, 6, 0.01)
+
+def F(x):
+    return 0 if x &lt; 1 else 1 if x &gt; n else np.floor(x) / n
+
+d2l.plot(x, np.array([F(y) for y in x]), 'x', 'c.d.f.')
+</code></pre>
+<p>If $X \sim \mathrm{Uniform}(n)$, then:</p>
+<ul>
+<li>$\mu_X = \frac{1+n}{2}$,</li>
+<li>$\sigma_X^2 = \frac{n^2-1}{12}$.</li>
+</ul>
+<p>We can sample an array of arbitrary shape from a discrete uniform random variable as follows.</p>
+<pre><code class="language-{.python">np.random.random_integers(1, n, size=(10, 10))
+</code></pre>
+<h2>Continuous Uniform</h2>
+<p>Next, let's discuss the continuous uniform distribution. The idea behind this random variable is that if we increase the $n$ in the discrete uniform distribution, and then scale it to fit within the interval $[a, b]$, we will approach a continuous random variable that just picks an arbitrary value in $[a, b]$ all with equal probability.  We will denote this distribution as</p>
+<p>$
+X \sim \mathrm{Uniform}([a, b]).
+$</p>
+<p>The probability density function is</p>
+<p>$p(x) = \begin{cases} \frac{1}{b-a} &amp; x \in [a, b], \ 0 &amp; x \not\in [a, b].\end{cases}$
+:eqlabel:<code>eq_cont_uniform_pdf</code></p>
+<p>The cumulative distribution function is</p>
+<p>$F(x) = \begin{cases} 0 &amp; x &lt; a, \ \frac{x-a}{b-a} &amp; x \in [a, b], \ 1 &amp; x &gt;= b . \end{cases}$
+:eqlabel:<code>eq_cont_uniform_cdf</code></p>
+<p>Let's first plot the probability density function :eqref:<code>eq_cont_uniform_pdf</code>.</p>
+<pre><code class="language-{.python">a, b = 1, 3
+
+x = np.arange(0, 4, 0.01)
+p = (x &gt; a)*(x &lt; b)/(b - a)
+
+d2l.plot(x, p, 'x', 'p.d.f.')
+</code></pre>
+<p>Now, let's plot the cumulative distribution function :eqref:<code>eq_cont_uniform_cdf</code>.</p>
+<pre><code class="language-{.python">def F(x):
+    return 0 if x &lt; a else 1 if x &gt; b else (x - a) / (b - a)
+
+d2l.plot(x, np.array([F(y) for y in x]), 'x', 'c.d.f.')
+</code></pre>
+<p>If $X \sim \mathrm{Uniform}([a, b])$, then:</p>
+<ul>
+<li>$\mu_X = \frac{a+b}{2}$,</li>
+<li>$\sigma_X^2 = \frac{(b-a)^2}{12}$.</li>
+</ul>
+<p>We can sample an array of arbitrary shape from a uniform random variable as follows.  Note that it by default samples from a $\mathrm{Uniform}([0,1])$, so if we want a different range we need to scale it.</p>
+<pre><code class="language-{.python">(b - a) * np.random.rand(10, 10) + a
+</code></pre>
+<h2>Binomial</h2>
+<p>Let's make things a little more complex and examine the <em>binomial</em> random variable.  This random variable originates from performing a sequence of $n$ independent experiments, each of which has probability $p$ of succeeding, and asking how many successes we expect to see.</p>
+<p>Let's express this mathematically.  Each experiment is an independent random variable $X_i$ where we will use $1$ to encode success, and $0$ to encode failure.  Since each is an independent coin flip which is successful with probability $p$, we can say that $X_i \sim \mathrm{Bernoulli}(p)$.  Then, the binomial random variable is</p>
+<p>$$
+X = \sum_{i=1}^n X_i.
+$$</p>
+<p>In this case, we will write</p>
+<p>$$
+X \sim \mathrm{Binomial}(n, p).
+$$</p>
+<p>To get the cumulative distribution function, we need to notice that getting exactly $k$ successes can occur in $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ ways each of which has a probability of $p^k(1-p)^{n-k}$ of occurring.  Thus the cumulative distribution function is</p>
+<p>$$F(x) = \begin{cases} 0 &amp; x &lt; 0, \ \sum_{m \le k} \binom{n}{m} p^m(1-p)^{n-m}  &amp; k \le x &lt; k+1 \text{ with } 0 \le k &lt; n, \ 1 &amp; x &gt;= n . \end{cases}$$
+:eqlabel:<code>eq_binomial_cdf</code></p>
+<p>Let's first plot the probability mass function.</p>
+<pre><code class="language-{.python">n, p = 10, 0.2
+
+# Compute binomial coefficient
+def binom(n, k):
+    comb = 1
+    for i in range(min(k, n - k)):
+        comb = comb * (n - i) // (i + 1)
+    return comb
+
+pmf = np.array([p**i * (1-p)**(n - i) * binom(n, i) for i in range(n + 1)])
+
+d2l.plt.stem([i for i in range(n + 1)], pmf, use_line_collection=True)
+d2l.plt.xlabel('x')
+d2l.plt.ylabel('p.m.f.')
+d2l.plt.show()
+</code></pre>
+<p>Now, let's plot the cumulative distribution function :eqref:<code>eq_binomial_cdf</code>.</p>
+<pre><code class="language-{.python">x = np.arange(-1, 11, 0.01)
+cmf = np.cumsum(pmf)
+
+def F(x):
+    return 0 if x &lt; 0 else 1 if x &gt; n else cmf[int(x)]
+
+d2l.plot(x, np.array([F(y) for y in x.tolist()]), 'x', 'c.d.f.')
+</code></pre>
+<p>While this result is not simple, the means and variances are.  If $X \sim \mathrm{Binomial}(n, p)$, then:</p>
+<ul>
+<li>$\mu_X = np$,</li>
+<li>$\sigma_X^2 = np(1-p)$.</li>
+</ul>
+<p>This can be sampled as follows.</p>
+<pre><code class="language-{.python">np.random.binomial(n, p, size=(10, 10))
+</code></pre>
+<h2>Poisson</h2>
+<p>Let's now perform a thought experiment.  We are standing at a bus stop and we want to know how many buses will arrive in the next minute.  Let's start by considering $X^{(1)} \sim \mathrm{Bernoulli}(p)$ which is simply the probability that a bus arrives in the one minute window.  For bus stops far from an urban center, this might be a pretty good approximation.  We may never see more than one bus in a minute.</p>
+<p>However, if we are in a busy area, it is possible or even likely that two buses will arrive.  We can model this by splitting our random variable into two parts for the first 30 seconds, or the second 30 seconds.  In this case we can write</p>
+<p>$$
+X^{(2)} \sim X^{(2)}_1 + X^{(2)}_2,
+$$</p>
+<p>where $X^{(2)}$ is the total sum, and $X^{(2)}_i \sim \mathrm{Bernoulli}(p/2)$.  The total distribution is then $X^{(2)} \sim \mathrm{Binomial}(2, p/2)$.</p>
+<p>Why stop here?  Let's continue to split that minute into $n$ parts.  By the same reasoning as above, we see that</p>
+<p>$$X^{(n)} \sim \mathrm{Binomial}(n, p/n).$$
+:eqlabel:<code>eq_eq_poisson_approx</code></p>
+<p>Consider these random variables.  By the previous section, we know that :eqref:<code>eq_eq_poisson_approx</code> has mean $\mu_{X^{(n)}} = n(p/n) = p$, and variance $\sigma_{X^{(n)}}^2 = n(p/n)(1-(p/n)) = p(1-p/n)$.  If we take $n \rightarrow \infty$, we can see that these numbers stabilize to $\mu_{X^{(\infty)}} = p$, and variance $\sigma_{X^{(\infty)}}^2 = p$.  This indicates that there <em>could be</em> some random variable we can define in this infinite subdivision limit.</p>
+<p>This should not come as too much of a surprise, since in the real world we can just count the number of bus arrivals, however it is nice to see that our mathematical model is well defined.  This discussion can be made formal as the <em>law of rare events</em>.</p>
+<p>Following through this reasoning carefully, we can arrive at the following model.  We will say that $X \sim \mathrm{Poisson}(\lambda)$ if it is a random variable which takes the values ${0,1,2, \ldots}$ with probability</p>
+<p>$$p_k = \frac{\lambda^ke^{-\lambda}}{k!}.$$
+:eqlabel:<code>eq_poisson_mass</code></p>
+<p>The value $\lambda &gt; 0$ is known as the <em>rate</em> (or the <em>shape</em> parameter), and denotes the average number of arrivals we expect in one unit of time.</p>
+<p>We may sum this probability mass function to get the cumulative distribution function.</p>
+<p>$$F(x) = \begin{cases} 0 &amp; x &lt; 0, \ e^{-\lambda}\sum_{m = 0}^k \frac{\lambda^m}{m!} &amp; k \le x &lt; k+1 \text{ with } 0 \le k. \end{cases}$$
+:eqlabel:<code>eq_poisson_cdf</code></p>
+<p>Let's first plot the probability mass function :eqref:<code>eq_poisson_mass</code>.</p>
+<pre><code class="language-{.python">lam = 5.0
+
+xs = [i for i in range(20)]
+pmf = np.array([np.exp(-lam) * lam**k / factorial(k) for k in xs])
+
+d2l.plt.stem(xs, pmf, use_line_collection=True)
+d2l.plt.xlabel('x')
+d2l.plt.ylabel('p.m.f.')
+d2l.plt.show()
+</code></pre>
+<p>Now, let's plot the cumulative distribution function :eqref:<code>eq_poisson_cdf</code>.</p>
+<pre><code class="language-{.python">x = np.arange(-1, 21, 0.01)
+cmf = np.cumsum(pmf)
+def F(x):
+    return 0 if x &lt; 0 else 1 if x &gt; n else cmf[int(x)]
+
+d2l.plot(x, np.array([F(y) for y in x.tolist()]), 'x', 'c.d.f.')
+</code></pre>
+<p>As we saw above, the means and variances are particularly concise.  If $X \sim \mathrm{Poisson}(\lambda)$, then:</p>
+<ul>
+<li>$\mu_X = \lambda$,</li>
+<li>$\sigma_X^2 = \lambda$.</li>
+</ul>
+<p>This can be sampled as follows.</p>
+<pre><code class="language-{.python">np.random.poisson(lam, size=(10, 10))
+</code></pre>
+<h2>Gaussian</h2>
+<p>Now Let's try a different, but related experiment.  Let's say we again are performing $n$ independent $\mathrm{Bernoulli}(p)$ measurements $X_i$.  The distribution of the sum of these is $X^{(n)} \sim \mathrm{Binomial}(n, p)$.  Rather than taking a limit as $n$ increases and $p$ decreases, Let's fix $p$, and then send $n \rightarrow \infty$.  In this case $\mu_{X^{(n)}} = np \rightarrow \infty$ and $\sigma_{X^{(n)}}^2 = np(1-p) \rightarrow \infty$, so there is no reason to think this limit should be well defined.</p>
+<p>However, not all hope is lost!  Let's just make the mean and variance be well behaved by defining</p>
+<p>$$
+Y^{(n)} = \frac{X^{(n)} - \mu_{X^{(n)}}}{\sigma_{X^{(n)}}}.
+$$</p>
+<p>This can be seen to have mean zero and variance one, and so it is plausible to believe that it will converge to some limiting distribution.  If we plot what these distributions look like, we will become even more convinced that it will work.</p>
+<pre><code class="language-{.python">p = 0.2
+ns = [1, 10, 100, 1000]
+d2l.plt.figure(figsize=(10, 3))
+for i in range(4):
+    n = ns[i]
+    pmf = np.array([p**i * (1-p)**(n-i) * binom(n, i) for i in range(n + 1)])
+    d2l.plt.subplot(1, 4, i + 1)
+    d2l.plt.stem([(i - n*p)/np.sqrt(n*p*(1 - p)) for i in range(n + 1)], pmf,
+                 use_line_collection=True)
+    d2l.plt.xlim([-4, 4])
+    d2l.plt.xlabel('x')
+    d2l.plt.ylabel('p.m.f.')
+    d2l.plt.title(&quot;n = {}&quot;.format(n))
+d2l.plt.show()
+</code></pre>
+<p>One thing to note: compared to the Poisson case, we are now dividing by the standard deviation which means that we are squeezing the possible outcomes into smaller and smaller areas.  This is an indication that our limit will no longer be discrete, but rather a continuous.</p>
+<p>A derivation of what occurs is beyond the scope of this document, but the <em>central limit theorem</em> states that as $n \rightarrow \infty$, this will yield the Gaussian Distribution (or sometimes normal distribution).  More explicitly, for any $a, b$:</p>
+<p>$$
+\lim_{n \rightarrow \infty} P(Y^{(n)} \in [a, b]) = P(\mathcal{N}(0,1) \in [a, b]),
+$$</p>
+<p>where we say a random variable is normally distributed with given mean $\mu$ and variance $\sigma^2$, written $X \sim \mathcal{N}(\mu, \sigma^2)$ if $X$ has density</p>
+<p>$$p_X(x) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}.$$
+:eqlabel:<code>eq_gaussian_pdf</code></p>
+<p>Let's first plot the probability density function :eqref:<code>eq_gaussian_pdf</code>.</p>
+<pre><code class="language-{.python">mu, sigma = 0, 1
+
+x = np.arange(-3, 3, 0.01)
+p = 1 / np.sqrt(2 * np.pi * sigma**2) * np.exp(-(x - mu)**2 / (2 * sigma**2))
+
+d2l.plot(x, p, 'x', 'p.d.f.')
+</code></pre>
+<p>Now, let's plot the cumulative distribution function.  It is beyond the scope of this appendix, but the Gaussian c.d.f. does not have a closed-form formula in terms of more elementary functions.  We will use <code>erf</code> which provides a way to compute this integral numerically.</p>
+<pre><code class="language-{.python">
+def phi(x):
+    return (1.0 + erf((x - mu) / (sigma * np.sqrt(2)))) / 2.0
+
+d2l.plot(x, np.array([phi(y) for y in x.tolist()]), 'x', 'c.d.f.')
+</code></pre>
+<p>Keen-eyed readers will recognize some of these terms.  Indeed, we encountered this integral in :numref:<code>sec_integral_calculus</code>.  Indeed we need exactly that computation to see that this $p_X(x)$ has total area one and is thus a valid density.</p>
+<p>Our choice of working with coin flips made computations shorter, but nothing about that choice was fundamental.  Indeed, if we take any collection of independent identically distributed random variables $X_i$, and form</p>
+<p>$$
+X^{(N)} = \sum_{i=1}^N X_i.
+$$</p>
+<p>Then</p>
+<p>$$
+\frac{X^{(N)} - \mu_{X^{(N)}}}{\sigma_{X^{(N)}}}
+$$</p>
+<p>will be approximately Gaussian.  There are additional requirements needed to make it work, most commonly $E[X^4] &lt; \infty$, but the philosophy is clear.</p>
+<p>The central limit theorem is the reason that the Gaussian is fundamental to probability, statistics, and machine learning.  Whenever we can say that something we measured is a sum of many small independent contributions, we can assume that the thing being measured will be close to Gaussian.</p>
+<p>There are many more fascinating properties of Gaussians, and we would like to discuss one more here.  The Gaussian is what is known as a <em>maximum entropy distribution</em>.  We will get into entropy more deeply in :numref:<code>sec_information_theory</code>, however all we need to know at this point is that it is a measure of randomness.  In a rigorous mathematical sense, we can think of the Gaussian as the <em>most</em> random choice of random variable with fixed mean and variance.  Thus, if we know that our random variable has some mean and variance, the Gaussian is in a sense the most conservative choice of distribution we can make.</p>
+<p>To close the section, Let's recall that if $X \sim \mathcal{N}(\mu, \sigma^2)$, then:</p>
+<ul>
+<li>$\mu_X = \mu$,</li>
+<li>$\sigma_X^2 = \sigma^2$.</li>
+</ul>
+<p>We can sample from the Gaussian (or standard normal) distribution as shown below.</p>
+<pre><code class="language-{.python">np.random.normal(mu, sigma, size=(10, 10))
+</code></pre>
+<h2>Summary</h2>
+<ul>
+<li>Bernoulli random variables can be used to model events with a yes/no outcome.</li>
+<li>Discrete uniform distributions model selects from a finite set of possibilities.</li>
+<li>Continuous uniform distributions select from an interval.</li>
+<li>Binomial distributions model a series of Bernoulli random variables, and count the number of successes.</li>
+<li>Poisson random variables model the arrival of rare events.</li>
+<li>Gaussian random variables model the result of adding a large number of independent random variables together.</li>
+</ul>
+<h2>Exercises</h2>
+<ol>
+<li>What is the standard deviation of a random variable that is the difference $X-Y$ of two independent binomial random variables $X, Y \sim \mathrm{Binomial}(16, 1/2)$.</li>
+<li>If we take a Poisson random variable $X \sim \mathrm{Poisson}(\lambda)$ and consider $(X - \lambda)/\sqrt{\lambda}$ as $\lambda \rightarrow \infty$, we can show that this becomes approximately Gaussian.  Why does this make sense?</li>
+<li>What is the probability mass function for a sum of two discrete uniform random variables on $n$ elements?</li>
+</ol>
+</div>
+</div>
+
+
+<!-- begin::footer -->
+<footer style="margin-top:100%">
+    <div class="container-fluid">
+        <div>© 2020 Primex - <a href="" target="_blank">Laborasyon</a></div>
+        <div>
+            <nav class="nav">
+                <a href="http://bootstrapmb.com/" class="nav-link">Licenses</a>
+                <a href="#" class="nav-link">Change Log</a>
+                <a href="#" class="nav-link">Get Help</a>
+            </nav>
+        </div>
+    </div>
+</footer>
+<!-- end::footer -->
+
+</div>
+<!-- end::main-content -->
+
+</div>
+<!-- end::main -->
+
+<!-- Plugin scripts -->
+<script src="static/vendors/bundle.js"></script>
+
+
+<!-- Slick -->
+<script src="static/vendors/slick/slick.min.js"></script>
+
+<!-- Chartjs -->
+<script src="static/vendors/charts/chartjs/chart.min.js"></script>
+
+<!-- Apex chart -->
+<script src="https://apexcharts.com/samples/assets/irregular-data-series.js"></script>
+<script src="static/vendors/charts/apex/apexcharts.min.js"></script>
+
+<!-- Daterangepicker -->
+<script src="static/vendors/datepicker/daterangepicker.js"></script>
+
+<!-- DataTable -->
+<script src="static/vendors/dataTable/datatables.min.js"></script>
+
+<!-- Dashboard scripts -->
+<script src="static/assets/js/examples/dashboard.js"></script>
+
+<!-- To use theme colors with Javascript -->
+<div class="colors">
+<div class="bg-primary"></div>
+<div class="bg-primary-bright"></div>
+<div class="bg-secondary"></div>
+<div class="bg-secondary-bright"></div>
+<div class="bg-info"></div>
+<div class="bg-info-bright"></div>
+<div class="bg-success"></div>
+<div class="bg-success-bright"></div>
+<div class="bg-danger"></div>
+<div class="bg-danger-bright"></div>
+<div class="bg-warning"></div>
+<div class="bg-warning-bright"></div>
+</div>
+
+<script>
+$(function () {
+$('.slick-js').slick({
+    speed: 5,
+    arrows: false,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 200,
+    responsive: [
+        {
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 3
+            }
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 2
+            }
+        },
+        {
+            breakpoint: 500,
+            settings: {
+                slidesToShow: 1
+            }
+        }
+    ]
+});
+
+$('input[name="daterangepicker"]').daterangepicker({
+    opens: 'left'
+});
+
+$('.dataTable').DataTable({
+    lengthMenu: [5, 10],
+    "columnDefs": [{
+        "targets": 7,
+        "orderable": false
+    }]
+});
+})
+</script>
+
+
+<!-- App scripts -->
+<script src="static/assets/js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>handbook of face recognition</title>
+
+    <!-- Favicon -->
+    <!-- {% load static %} -->
+    <link rel="icon" href="static/img/favicon_2.ico">
+<!-- {#    <link rel="shortcut icon" href="static/assets/media/image/favicon.png"/>#} -->
+    <!-- Plugin styles -->
+    <link rel="stylesheet" href="static/vendors/bundle.css" type="text/css">
+    <!-- Slick -->
+    <link rel="stylesheet" href="static/vendors/slick/slick.css" type="text/css">
+    <link rel="stylesheet" href="static/vendors/slick/slick-theme.css" type="text/css">
+
+    <!-- Daterangepicker -->
+    <link rel="stylesheet" href="static/vendors/datepicker/daterangepicker.css" type="text/css">
+
+    <!-- DataTable -->
+    <link rel="stylesheet" href="static/vendors/dataTable/datatables.min.css" type="text/css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="static/assets/css/app.css" type="text/css">
+    <!-- {% block script_link %} -->
+    <link rel="stylesheet" href="static/css/highlights/default.css">
+    <link rel="stylesheet" href="static/css/pygments.css"/>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <script src="static/js/jquery-2.1.3.min.js" ></script>
+    <style>
+    h1, h2, h3{color:rgb(33,150,243)!important}
+    .h1, h1 {
+        font-size: 28px;
+    }
+    p {
+        font-size: 16px;
+        letter-spacing: 0;
+        margin: 0 0 10px;
+        font-weight: 400;
+        line-height: 24px;
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+    </style>
+
+    <script type="text/x-mathjax-config">
+        window.MathJax.Hub.Config({
+            showProcessingMessages: false, //关闭js加载过程信息
+            messageStyle: "none", //不显示信息
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ], //行内公式选择符
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ], //段内公式选择符
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'], //避开某些标签
+                ignoreClass:"comment-content" //避开含该Class的标签
+            },
+            "HTML-CSS": {
+                availableFonts: ["STIX","TeX"], //可选字体
+                showMathMenu: false //关闭右击菜单显示
+            }
+        });
+        window.MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    </script>
+    <script src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" async="async" src="static/js/MathJax.js"></script>
+    <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js"></script>
+    <script data-no-instant>
+        InstantClick.on('change', function(isInitialLoad){
+            if (isInitialLoad === false) {
+                if (typeof MathJax !== 'undefined'){
+                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+                }
+            }
+        });
+        InstantClick.init();
+    </script>
+<!-- <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"> -->
+</script>
+    <!-- {% endblock %} -->
+</head>
+<body>
+
+<!-- begin::preloader-->
+<!-- {#<div class="preloader">#}
+{#    <div class="preloader-icon"></div>#}
+{#</div>#} -->
+<!-- end::preloader -->
+
+<!-- begin::header -->
+<div class="header" style="background-color: #26A69A;color: white">
+
+    <div class="header-left">
+        <div class="navigation-toggler">
+            <a href="#" data-action="navigation-toggler">
+                <i data-feather="menu"></i>
+            </a>
+        </div>
+        <div class="header-logo">
+            <a href="d2l.html">
+<!-- {#                <img class="logo" src="{% static 'img/favicon_2.ico' %}" alt="logo">#} -->
+                <img style="width: 150px;display: block" class="logo" src="static/img/d2l_nav.png" alt="logo">
+<!-- {#                <img class="logo-light" src="#" alt="light logo">#} -->
+            </a>
+            <!-- <div style="margin:0 15%;text-align: center;z-index: 0;">
+                <div class="page-title" style="text-align: center;padding: 0">
+                    <span class="logo" style="color:white;font-size: 28px;">Handbook of Face Recognition (3rd Edition)</span>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    
+    <div class="header-body" >
+        <div style="margin:auto;text-align: center;">
+            <div class="page-title" style="text-align: center;padding: 0">
+                <span class="logo" style="color:white;font-size: 28px;">Handbook of Face Recognition (3rd Edition) <a href="d2l.html">d2l</a></span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- end::header -->
+
+<!-- begin::main -->
+<div id="main">
+
+    <!-- begin::navigation -->
+    <div class="navigation" style="padding: 0">
+        <div class="navigation-menu-body" style="font-size: 15px; font-weight: normal;color: #6a737d">
+            <div class="navigation-menu-group">
+                <div class="open"
+                     id="dashboards">
+                    <ul>
+                        <li>
+                            <a href="">Preface</a>
+                        </li>
+                        <li>
+                            <a href="">Installation</a>
+                        </li>
+                        <li>
+                            <a href="">Notation</a>
+                        </li>
+                        <li>
+                            <a href="">I. Introduction and Background</a>
+                            <ul>
+                                <li>
+                                    <a href="">1. Face Recognition Research and Development</a>
+                                </li>
+                                <li>
+                                    <a href="">2. The Deep Neural Networks Approach to Face Recognition</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="">II. Fundamentals of Deep Neural Networks</a>
+                            <ul>
+                                <li>
+                                    <a href="">3. Neural Network Architectures</a>
+                                </li>
+                                <li>
+                                    <a href="">4. Generative Autoencoder Networks</a>
+                                </li>
+                                <li>
+                                    <a href="">5. Generative Adversarial Networks</a>
+                                </li>
+                                <li>
+                                    <a href="">6. Transfer Learning and Domain Adaptation</a>
+                                </li>
+                                <li>
+                                    <a href="">7. Semi-supervised Learning</a>
+                                </li>
+                                <li>
+                                    <a href="">8. Neural Network Model Compression and Acceleration</a>
+                                </li>
+                                <li>
+                                    <a href="">9. Deep Learning Development Frameworks</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">III. Face Recognition by Deep Neural Networks</a>
+                            <ul>
+                                <li>
+                                    <a href="">10. Face Detection</a>
+                                </li>
+                                <li>
+                                    <a href="">11. Face Alignment</a>
+                                </li>
+                                <li>
+                                    <a href="">12. Face Parsing</a>
+                                </li>
+                                <li>
+                                    <a href="">13. 3D Face Landmarking and Morphing</a>
+                                </li>
+                                <li>
+                                    <a href="">14. Face Similarity Metric Learning</a>
+                                </li>
+                                <li>
+                                    <a href="">15. Face Feature Learning</a>
+                                </li>
+                                <li>
+                                    <a href="">16. Pose Invariant Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">17. Age Invariant Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">18. 3D Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">19. Heterogeneous Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">20. Face Spoofing Detection</a>
+                                </li>
+                                <li>
+                                    <a href="">21. Adversarial Face Perturbations</a>
+                                </li>
+                                <li>
+                                    <a href="">22. Face Expression Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">23. Face Attribute Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">24. Multi-task Learning for Face Analysis</a>
+                                </li>
+                                <li>
+                                    <a href="">25. Face Recognition in Video</a>
+                                </li>
+                                <li>
+                                    <a href="">26. Face Super-resolution</a>
+                                </li>
+                                <li>
+                                    <a href="">27. Face Data Augmentation</a>
+                                </li>
+                                <li>
+                                    <a href="">28. Face Animation</a>
+                                </li>
+                                <li>
+                                    <a href="">29. Explainable face recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">30. Bias in Face Recognition</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">IV. Face Recognition Systems</a>
+                            <ul>
+                <li>
+                    <a href="">31. Face Unlock Systems</a>
+                </li>
+                <li>
+                    <a href="">32. Large Scale Face Search Systems</a>
+                </li>
+                <li>
+                    <a href="">33. Security and Privacy Protection</a>
+                </li>
+                <li>
+                    <a href="">34. Database and Benchmarking</a>
+                </li>
+                <li>
+                    <a href="">35. Face Recognition Standards</a>
+                </li>
+                <li>
+                    <a href="">36. Government Regulations and Ethics</a>
+                </li>
+            </ul>
+                        </li>
+                        <li>
+                            <a href="">Appendix. Open Source Data and Code</a>
+                            <ul>
+                                <li>
+                                    <a href="">1. Open Source Data and Code: Overview</a>
+                                </li>
+                                <li>
+                                    <a href="">2. Fundamentals of Deep Neural Networks</a>
+                                </li>
+                                <li>
+                                    <a href="">3. Face Recognition by Deep Neural Networks</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="https://github.com/FRH-Code-Data/Appendix/blob/master/References.md">References</a>
+                            <ul>
+                                <li>
+                                    <a href="">Editors</a>
+                                </li>
+                                <li>
+                                    <a href="">Contributions</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end::navigation -->
+
+    <div class="main-content">
+        <div class="main">
+            <div class="document" role="main" style="padding: 0 15%">
+<h1>Linear Regression</h1>
+<p>:label:<code>sec_linear_regression</code></p>
+<p>Regression refers to a set of methods for modeling
+the relationship between data points $\mathbf{x}$
+and corresponding real-valued targets $y$.
+In the natural sciences and social sciences,
+the purpose of regression is most often to
+<em>characterize</em> the relationship between the inputs and outputs.
+Machine learning, on the other hand,
+is most often concerned with <em>prediction</em>.</p>
+<p>Regression problems pop up whenever we want to predict a numerical value.
+Common examples include predicting prices (of homes, stocks, etc.),
+predicting length of stay (for patients in the hospital),
+demand forecasting (for retail sales), among countless others.
+Not every prediction problem is a classic <em>regression</em> problem.
+In subsequent sections, we will introduce classification problems,
+where the goal is to predict membership among a set of categories.</p>
+<h2>Basic Elements of Linear Regression</h2>
+<p><em>Linear regression</em> may be both the simplest
+and most popular among the standard tools to regression.
+Dating back to the dawn of the 19th century,
+linear regression flows from a few simple assumptions.
+First, we assume that the relationship between
+the <em>features</em> $\mathbf{x}$ and targets $y$ is linear,
+i.e., that $y$ can be expressed as a weighted sum
+of the inputs $\textbf{x}$,
+give or take some noise on the observations.
+Second, we assume that any noise is well-behaved
+(following a Gaussian distribution).
+To motivate the approach, let's start with a running example.
+Suppose that we wish to estimate the prices of houses (in dollars)
+based on their area (in square feet) and age (in years).</p>
+<p>To actually fit a model for predicting house prices,
+we would need to get our hands on a dataset
+consisting of sales for which we know
+the sale price, area and age for each home.
+In the terminology of machine learning,
+the dataset is called a <em>training data</em> or <em>training set</em>,
+and each row (here the data corresponding to one sale)
+is called an <em>instance</em> or <em>example</em>.
+The thing we are trying to predict (here, the price)
+is called a <em>target</em> or <em>label</em>.
+The variables (here <em>age</em> and <em>area</em>)
+upon which the predictions are based
+are called <em>features</em> or <em>covariates</em>.</p>
+<p>Typically, we will use $n$ to denote
+the number of examples in our dataset.
+We index the samples by $i$, denoting each input data point
+as $x^{(i)} = [x_1^{(i)}, x_2^{(i)}]$
+and the corresponding label as $y^{(i)}$.</p>
+<h3>Linear Model</h3>
+<p>The linearity assumption just says that the target (price)
+can be expressed as a weighted sum of the features (area and age):</p>
+<p>$$\mathrm{price} = w_{\mathrm{area}} \cdot \mathrm{area} + w_{\mathrm{age}} \cdot \mathrm{age} + b.$$</p>
+<p>Here, $w_{\mathrm{area}}$ and $w_{\mathrm{age}}$
+are called <em>weights</em>, and $b$ is called a <em>bias</em>
+(also called an <em>offset</em> or <em>intercept</em>).
+The weights determine the influence of each feature
+on our prediction and the bias just says
+what value the predicted price should take
+when all of the features take value $0$.
+Even if we will never see any homes with zero area,
+or that are precisely zero years old,
+we still need the intercept or else we will
+limit the expressivity of our linear model.</p>
+<p>Given a dataset, our goal is to choose
+the weights $w$ and bias $b$ such that on average,
+the predictions made according to our model
+best fit the true prices observed in the data.</p>
+<p>In disciplines where it is common to focus
+on datasets with just a few features,
+explicitly expressing models long-form like this is common.
+In ML, we usually work with high-dimensional datasets,
+so it is more convenient to employ linear algebra notation.
+When our inputs consist of $d$ features,
+we express our prediction $\hat{y}$ as</p>
+<p>$$\hat{y} = w_1 \cdot x_1 + ... + w_d \cdot x_d + b.$$</p>
+<p>Collecting all features into a vector $\mathbf{x}$
+and all weights into a vector $\mathbf{w}$,
+we can express our model compactly using a dot product:</p>
+<p>$$\hat{y} = \mathbf{w}^\top \mathbf{x} + b.$$</p>
+<p>Here, the vector $\mathbf{x}$ corresponds to a single data point.
+We will often find it convenient
+to refer to our entire dataset via the <em>design matrix</em> $\mathbf{X}$.
+Here, $\mathbf{X}$ contains one row for every example
+and one column for every feature.</p>
+<p>For a collection of data points $\mathbf{X}$,
+the predictions $\hat{\mathbf{y}}$
+can be expressed via the matrix-vector product:</p>
+<p>$${\hat{\mathbf{y}}} = \mathbf{X} \mathbf{w} + b.$$</p>
+<p>Given a training dataset $\mathbf{X}$
+and corresponding (known) targets $\mathbf{y}$,
+the goal of linear regression is to find
+the <em>weight</em> vector $w$ and bias term $b$
+that given a new data point $\mathbf{x}_i$,
+sampled from the same distribution as the training data
+will (in expectation) predict the target $y_i$ with the lowest error.</p>
+<p>Even if we believe that the best model for
+predicting $y$ given $\mathbf{x}$ is linear,
+we would not expect to find real-world data where
+$y_i$ exactly equals $\mathbf{w}^\top \mathbf{x}+b$
+for all points ($\mathbf{x}, y)$.
+For example, whatever instruments we use to observe
+the features $\mathbf{X}$ and labels $\mathbf{y}$
+might suffer small amount of measurement error.
+Thus, even when we are confident
+that the underlying relationship is linear,
+we will incorporate a noise term to account for such errors.</p>
+<p>Before we can go about searching for the best parameters $\mathbf{w}$ and $b$,
+we will need two more things:
+(i) a quality measure for some given model;
+and (ii) a procedure for updating the model to improve its quality.</p>
+<h3>Loss Function</h3>
+<p>Before we start thinking about how <em>to fit</em> our model,
+we need to determine a measure of <em>fitness</em>.
+The <em>loss function</em> quantifies the distance
+between the <em>real</em> and <em>predicted</em> value of the target.
+The loss will usually be a non-negative number
+where smaller values are better
+and perfect predictions incur a loss of $0$.
+The most popular loss function in regression problems
+is the sum of squared errors.
+When our prediction for an example $i$ is $\hat{y}^{(i)}$
+and the corresponding true label is $y^{(i)}$,
+the squared error is given by:</p>
+<p>$$l^{(i)}(\mathbf{w}, b) = \frac{1}{2} \left(\hat{y}^{(i)} - y^{(i)}\right)^2.$$</p>
+<p>The constant $1/2$ makes no real difference
+but will prove notationally convenient,
+cancelling out when we take the derivative of the loss.
+Since the training dataset is given to us, and thus out of our control,
+the empirical error is only a function of the model parameters.
+To make things more concrete, consider the example below
+where we plot a regression problem for a one-dimensional case
+as shown in :numref:<code>fig_fit_linreg</code>.</p>
+<p><img src="static/img/fit_linreg.svg" alt="Fit data with a linear model." />
+:label:<code>fig_fit_linreg</code></p>
+<p>Note that large differences between
+estimates $\hat{y}^{(i)}$ and observations $y^{(i)}$
+lead to even larger contributions to the loss,
+due to the quadratic dependence.
+To measure the quality of a model on the entire dataset,
+we simply average (or equivalently, sum)
+the losses on the training set.</p>
+<p>$$L(\mathbf{w}, b) =\frac{1}{n}\sum_{i=1}^n l^{(i)}(\mathbf{w}, b) =\frac{1}{n} \sum_{i=1}^n \frac{1}{2}\left(\mathbf{w}^\top \mathbf{x}^{(i)} + b - y^{(i)}\right)^2.$$</p>
+<p>When training the model, we want to find parameters ($\mathbf{w}^<em>, b^</em>$)
+that minimize the total loss across all training samples:</p>
+<p>$$\mathbf{w}^<em>, b^</em> = \operatorname*{argmin}_{\mathbf{w}, b}\  L(\mathbf{w}, b).$$</p>
+<h3>Analytic Solution</h3>
+<p>Linear regression happens to be an unusually simple optimization problem.
+Unlike most other models that we will encounter in this book,
+linear regression can be solved analytically by applying a simple formula,
+yielding a global optimum.
+To start, we can subsume the bias $b$ into the parameter $\mathbf{w}$
+by appending a column to the design matrix consisting of all $1s$.
+Then our prediction problem is to minimize $||\mathbf{y} - \mathbf{X}\mathbf{w}||$.
+Because this expression has a quadratic form, it is convex,
+and so long as the problem is not degenerate
+(our features are linearly independent), it is strictly convex.</p>
+<p>Thus there is just one critical point on the loss surface
+and it corresponds to the global minimum.
+Taking the derivative of the loss with respect to $\mathbf{w}$
+and setting it equal to $0$ yields the analytic solution:</p>
+<p>$$\mathbf{w}^* = (\mathbf X^\top \mathbf X)^{-1}\mathbf X^\top \mathbf{y}.$$</p>
+<p>While simple problems like linear regression
+may admit analytic solutions,
+you should not get used to such good fortune.
+Although analytic solutions allow for nice mathematical analysis,
+the requirement of an analytic solution is so restrictive
+that it would exclude all of deep learning.</p>
+<h3>Gradient descent</h3>
+<p>Even in cases where we cannot solve the models analytically,
+and even when the loss surfaces are high-dimensional and nonconvex,
+it turns out that we can still train models effectively in practice.
+Moreover, for many tasks, these difficult-to-optimize models
+turn out to be so much better that figuring out how to train them
+ends up being well worth the trouble.</p>
+<p>The key technique for optimizing nearly any deep learning model,
+and which we will call upon throughout this book,
+consists of iteratively reducing the error
+by updating the parameters in the direction
+that incrementally lowers the loss function.
+This algorithm is called <em>gradient descent</em>.
+On convex loss surfaces, it will eventually converge to a global minimum,
+and while the same cannot be said for nonconvex surfaces,
+it will at least lead towards a (hopefully good) local minimum.</p>
+<p>The most naive application of gradient descent
+consists of taking the derivative of the true loss,
+which is an average of the losses computed
+on every single example in the dataset.
+In practice, this can be extremely slow.
+We must pass over the entire dataset before making a single update.
+Thus, we will often settle for sampling a random minibatch of examples
+every time we need to compute the update,
+a variant called <em>stochastic gradient descent</em>.</p>
+<p>In each iteration, we first randomly sample a minibatch $\mathcal{B}$
+consisting of a fixed number of training data examples.
+We then compute the derivative (gradient) of the average loss
+on the mini batch with regard to the model parameters.
+Finally, we multiply the gradient by a predetermined step size $\eta &gt; 0$
+and subtract the resulting term from the current parameter values.</p>
+<p>We can express the update mathematically as follows
+($\partial$ denotes the partial derivative) :</p>
+<p>$$(\mathbf{w},b) \leftarrow (\mathbf{w},b) - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \partial_{(\mathbf{w},b)} l^{(i)}(\mathbf{w},b).$$</p>
+<p>To summarize, steps of the algorithm are the following:
+(i) we initialize the values of the model parameters, typically at random;
+(ii) we iteratively sample random batches from the data (many times),
+updating the parameters in the direction of the negative gradient.</p>
+<p>For quadratic losses and linear functions,
+we can write this out explicitly as follows:
+Note that $\mathbf{w}$ and $\mathbf{x}$ are vectors.
+Here, the more elegant vector notation makes the math
+much more readable than expressing things in terms of coefficients,
+say $w_1, w_2, \ldots, w_d$.</p>
+<p>$$
+\begin{aligned}
+\mathbf{w} &amp;\leftarrow \mathbf{w} -   \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \partial_{\mathbf{w}} l^{(i)}(\mathbf{w}, b) &amp;&amp; =
+\mathbf{w} - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \mathbf{x}^{(i)} \left(\mathbf{w}^\top \mathbf{x}^{(i)} + b - y^{(i)}\right),\
+b &amp;\leftarrow b -  \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \partial_b l^{(i)}(\mathbf{w}, b)  &amp;&amp; =
+b - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \left(\mathbf{w}^\top \mathbf{x}^{(i)} + b - y^{(i)}\right).
+\end{aligned}
+$$</p>
+<p>In the above equation, $|\mathcal{B}|$ represents
+the number of examples in each minibatch (the <em>batch size</em>)
+and $\eta$ denotes the <em>learning rate</em>.
+We emphasize that the values of the batch size and learning rate
+are manually pre-specified and not typically learned through model training.
+These parameters that are tunable but not updated
+in the training loop are called <em>hyper-parameters</em>.
+<em>Hyperparameter tuning</em> is the process by which these are chosen,
+and typically requires that we adjust the hyperparameters
+based on the results of the inner (training) loop
+as assessed on a separate <em>validation</em> split of the data.</p>
+<p>After training for some predetermined number of iterations
+(or until some other stopping criteria is met),
+we record the estimated model parameters,
+denoted $\hat{\mathbf{w}}, \hat{b}$
+(in general the &quot;hat&quot; symbol denotes estimates).
+Note that even if our function is truly linear and noiseless,
+these parameters will not be the exact minimizers of the loss
+because, although the algorithm converges slowly towards a local minimum
+it cannot achieve it exactly in a finite number of steps.</p>
+<p>Linear regression happens to be a convex learning problem,
+and thus there is only one (global) minimum.
+However, for more complicated models, like deep networks,
+the loss surfaces contain many minima.
+Fortunately, for reasons that are not yet fully understood,
+deep learning practitioners seldom struggle to find parameters
+that minimize the loss <em>on training data</em>.
+The more formidable task is to find parameters
+that will achieve low loss on data
+that we have not seen before,
+a challenge called <em>generalization</em>.
+We return to these topics throughout the book.</p>
+<h3>Making Predictions with the Learned Model</h3>
+<p>Given the learned linear regression model
+$\hat{\mathbf{w}}^\top \mathbf{x} + \hat{b}$,
+we can now estimate the price of a new house
+(not contained in the training data)
+given its area $x_1$ and age (year) $x_2$.
+Estimating targets given features is
+commonly called <em>prediction</em> and <em>inference</em>.</p>
+<p>We will try to stick with <em>prediction</em> because
+calling this step <em>inference</em>,
+despite emerging as standard jargon in deep learning,
+is somewhat of a misnomer.
+In statistics, <em>inference</em> more often denotes
+estimating parameters based on a dataset.
+This misuse of terminology is a common source of confusion
+when deep learning practitioners talk to statisticians.</p>
+<h3>Vectorization for Speed</h3>
+<p>When training our models, we typically want to process
+whole minibatches of examples simultaneously.
+Doing this efficiently requires that we vectorize the calculations
+and leverage fast linear algebra libraries
+rather than writing costly for-loops in Python.</p>
+<p>To illustrate why this matters so much,
+we can consider two methods for adding vectors.
+To start we instantiate two $10000$-dimensional vectors
+containing all ones.
+In one method we will loop over the vectors with a Python <code>for</code> loop.
+In the other method we will rely on a single call to <code>np</code>.</p>
+<pre><code class="language-{.python">%matplotlib inline
+import d2l
+import math
+from mxnet import np
+import time
+
+n = 10000
+a = np.ones(n)
+b = np.ones(n)
+</code></pre>
+<p>Since we will benchmark the running time frequently in this book,
+let's define a timer (hereafter accessed via the <code>d2l</code> package
+to track the running time.</p>
+<pre><code class="language-{.python"># Saved in the d2l package for later use
+class Timer:
+    &quot;&quot;&quot;Record multiple running times.&quot;&quot;&quot;
+    def __init__(self):
+        self.times = []
+        self.start()
+
+    def start(self):
+        # Start the timer
+        self.tik = time.time()
+
+    def stop(self):
+        # Stop the timer and record the time in a list
+        self.times.append(time.time() - self.tik)
+        return self.times[-1]
+
+    def avg(self):
+        # Return the average time
+        return sum(self.times) / len(self.times)
+
+    def sum(self):
+        # Return the sum of time
+        return sum(self.times)
+
+    def cumsum(self):
+        # Return the accumulated times
+        return np.array(self.times).cumsum().tolist()
+</code></pre>
+<p>Now we can benchmark the workloads.
+First, we add them, one coordinate at a time,
+using a <code>for</code> loop.</p>
+<pre><code class="language-{.python">c = np.zeros(n)
+timer = Timer()
+for i in range(n):
+    c[i] = a[i] + b[i]
+'%.5f sec' % timer.stop()
+</code></pre>
+<p>Alternatively, we rely on <code>np</code> to compute the elementwise sum:</p>
+<pre><code class="language-{.python">timer.start()
+d = a + b
+'%.5f sec' % timer.stop()
+</code></pre>
+<p>You probably noticed that the second method
+is dramatically faster than the first.
+Vectorizing code often yields order-of-magnitude speedups.
+Moreover, we push more of the math to the library
+and need not write as many calculations ourselves,
+reducing the potential for errors.</p>
+<h2>The Normal Distribution and Squared Loss</h2>
+<p>While you can already get your hands dirty using only the information above,
+in the following section we can more formally motivate the square loss objective
+via assumptions about the distribution of noise.</p>
+<p>Recall from the above that the squared loss
+$l(y, \hat{y}) = \frac{1}{2} (y - \hat{y})^2$
+has many convenient properties.
+These include a simple derivative
+$\partial_{\hat{y}} l(y, \hat{y}) = (\hat{y} - y)$.</p>
+<p>As we mentioned earlier, linear regression was invented by Gauss in 1795,
+who also discovered the normal distribution (also called the <em>Gaussian</em>).
+It turns out that the connection between
+the normal distribution and linear regression
+runs deeper than common parentage.
+To refresh your memory, the probability density
+of a normal distribution with mean $\mu$ and variance $\sigma^2$
+is given as follows:</p>
+<p>$$p(z) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\left(-\frac{1}{2 \sigma^2} (z - \mu)^2\right).$$</p>
+<p>Below we define a Python function to compute the normal distribution.</p>
+<pre><code class="language-{.python">def normal(z, mu, sigma):
+    p = 1 / math.sqrt(2 * math.pi * sigma**2)
+    return p * np.exp(- 0.5 / sigma**2 * (z - mu)**2)
+</code></pre>
+<p>We can now visualize the normal distributions.</p>
+<pre><code class="language-{.python">x = np.arange(-7, 7, 0.01)
+
+# Mean and variance pairs
+parameters = [(0, 1), (0, 2), (3, 1)]
+d2l.plot(x, [normal(x, mu, sigma) for mu, sigma in parameters], xlabel='z',
+         ylabel='p(z)', figsize=(4.5, 2.5),
+         legend=['mean %d, var %d' % (mu, sigma) for mu, sigma in parameters])
+</code></pre>
+<p>As you can see, changing the mean corresponds to a shift along the <em>x axis</em>,
+and increasing the variance spreads the distribution out, lowering its peak.</p>
+<p>One way to motivate linear regression with the mean squared error loss function
+is to formally assume that observations arise from noisy observations,
+where the noise is normally distributed as follows</p>
+<p>$$y = \mathbf{w}^\top \mathbf{x} + b + \epsilon \text{ where } \epsilon \sim \mathcal{N}(0, \sigma^2).$$</p>
+<p>Thus, we can now write out the <em>likelihood</em>
+of seeing a particular $y$ for a given $\mathbf{x}$ via</p>
+<p>$$p(y|\mathbf{x}) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\left(-\frac{1}{2 \sigma^2} (y - \mathbf{w}^\top \mathbf{x} - b)^2\right).$$</p>
+<p>Now, according to the <em>maximum likelihood principle</em>,
+the best values of $b$ and $\mathbf{w}$ are those
+that maximize the <em>likelihood</em> of the entire dataset:</p>
+<p>$$P(Y\mid X) = \prod_{i=1}^{n} p(y^{(i)}|\mathbf{x}^{(i)}).$$</p>
+<p>Estimators chosen according to the <em>maximum likelihood principle</em>
+are called <em>Maximum Likelihood Estimators</em> (MLE).
+While, maximizing the product of many exponential functions,
+might look difficult,
+we can simplify things significantly, without changing the objective,
+by maximizing the log of the likelihood instead.
+For historical reasons, optimizations are more often expressed
+as minimization rather than maximization.
+So, without changing anything we can minimize the <em>Negative Log-Likelihood (NLL)</em>
+$-\log p(\mathbf y|\mathbf X)$.
+Working out the math gives us:</p>
+<p>$$-\log p(\mathbf y|\mathbf X) = \sum_{i=1}^n \frac{1}{2} \log(2 \pi \sigma^2) + \frac{1}{2 \sigma^2} \left(y^{(i)} - \mathbf{w}^\top \mathbf{x}^{(i)} - b\right)^2.$$</p>
+<p>Now we just need one more assumption: that $\sigma$ is some fixed constant.
+Thus we can ignore the first term because
+it does not depend on $\mathbf{w}$ or $b$.
+Now the second term is identical to the squared error objective introduced earlier,
+but for the multiplicative constant $\frac{1}{\sigma^2}$.
+Fortunately, the solution does not depend on $\sigma$.
+It follows that minimizing squared error
+is equivalent to maximum likelihood estimation
+of a linear model under the assumption of additive Gaussian noise.</p>
+<h2>From Linear Regression to Deep Networks</h2>
+<p>So far we only talked about linear functions.
+While neural networks cover a much richer family of models,
+we can begin thinking of the linear model
+as a neural network by expressing it in the language of neural networks.
+To begin, let's start by rewriting things in a 'layer' notation.</p>
+<h3>Neural Network Diagram</h3>
+<p>Deep learning practitioners like to draw diagrams
+to visualize what is happening in their models.
+In :numref:<code>fig_single_neuron</code>,
+we depict our linear model as a neural network.
+Note that these diagrams indicate the connectivity pattern
+(here, each input is connected to the output)
+but not the values taken by the weights or biases.</p>
+<p><img src="static/img/singleneuron.svg" alt="Linear regression is a single-layer neural network. " />
+:label:<code>fig_single_neuron</code></p>
+<p>Because there is just a single computed neuron (node) in the graph
+(the input values are not computed but given),
+we can think of linear models as neural networks
+consisting of just a single artificial neuron.
+Since for this model, every input is connected
+to every output (in this case there is only one output!),
+we can regard this transformation as a <em>fully-connected layer</em>,
+also commonly called a <em>dense layer</em>.
+We will talk a lot more about networks composed of such layers
+in the next chapter on multilayer perceptrons.</p>
+<h3>Biology</h3>
+<p>Although linear regression (invented in 1795)
+predates computational neuroscience,
+so it might seem anachronistic to describe
+linear regression as a neural network.
+To see why linear models were a natural place to begin
+when the cyberneticists/neurophysiologists
+Warren McCulloch and Walter Pitts
+looked when they began to develop
+models of artificial neurons,
+consider the cartoonish picture
+of a biological neuron in :numref:<code>fig_Neuron</code>, consisting of
+<em>dendrites</em> (input terminals),
+the <em>nucleus</em> (CPU), the <em>axon</em> (output wire),
+and the <em>axon terminals</em> (output terminals),
+enabling connections to other neurons via <em>synapses</em>.</p>
+<p><img src="static/img/Neuron.svg" alt="The real neuron" />
+:label:<code>fig_Neuron</code></p>
+<p>Information $x_i$ arriving from other neurons
+(or environmental sensors such as the retina)
+is received in the dendrites.
+In particular, that information is weighted by <em>synaptic weights</em> $w_i$
+determining the effect of the inputs
+(e.g., activation or inhibition via the product $x_i w_i$).
+The weighted inputs arriving from multiple sources
+are aggregated in the nucleus as a weighted sum $y = \sum_i x_i w_i + b$,
+and this information is then sent for further processing in the axon $y$,
+typically after some nonlinear processing via $\sigma(y)$.
+From there it either reaches its destination (e.g., a muscle)
+or is fed into another neuron via its dendrites.</p>
+<p>Certainly, the high-level idea that many such units
+could be cobbled together with the right connectivity
+and right learning algorithm,
+to produce far more interesting and complex behavior
+than any one neuron along could express
+owes to our study of real biological neural systems.</p>
+<p>At the same time, most research in deep learning today
+draws little direct inspiration in neuroscience.
+We invoke Stuart Russell and Peter Norvig who,
+in their classic AI text book
+<em>Artificial Intelligence: A Modern Approach</em> :cite:<code>Russell.Norvig.2016</code>,
+pointed out that although airplanes might have been <em>inspired</em> by birds,
+ornithology has not been the primary driver
+of aeronautics innovation for some centuries.
+Likewise, inspiration in deep learning these days
+comes in equal or greater measure from mathematics,
+statistics, and computer science.</p>
+<h2>Summary</h2>
+<ul>
+<li>Key ingredients in a machine learning model are training data, a loss function, an optimization algorithm, and quite obviously, the model itself.</li>
+<li>Vectorizing makes everything better (mostly math) and faster (mostly code).</li>
+<li>Minimizing an objective function and performing maximum likelihood can mean the same thing.</li>
+<li>Linear models are neural networks, too.</li>
+</ul>
+<h2>Exercises</h2>
+<ol>
+<li>Assume that we have some data $x_1, \ldots, x_n \in \mathbb{R}$. Our goal is to find a constant $b$ such that $\sum_i (x_i - b)^2$ is minimized.<ul>
+<li>Find a closed-form solution for the optimal value of $b$.</li>
+<li>How does this problem and its solution relate to the normal distribution?</li>
+</ul>
+</li>
+<li><p>Derive the closed-form solution to the optimization problem for linear regression with squared error. To keep things simple, you can omit the bias $b$ from the problem (we can do this in principled fashion by adding one column to $X$ consisting of all ones).</p>
+<ul>
+<li>Write out the optimization problem in matrix and vector notation (treat all the data as a single matrix, all the target values as a single vector).</li>
+<li>Compute the gradient of the loss with respect to $w$.</li>
+<li>Find the closed form solution by setting the gradient equal to zero and solving the matrix equation.</li>
+<li>When might this be better than using stochastic gradient descent? When might this method break?</li>
+</ul>
+</li>
+<li><p>Assume that the noise model governing the additive noise $\epsilon$ is the exponential distribution. That is, $p(\epsilon) = \frac{1}{2} \exp(-|\epsilon|)$.</p>
+<ul>
+<li>Write out the negative log-likelihood of the data under the model $-\log P(Y \mid X)$.</li>
+<li>Can you find a closed form solution?</li>
+<li>Suggest a stochastic gradient descent algorithm to solve this problem. What could possibly go wrong (hint - what happens near the stationary point as we keep on updating the parameters). Can you fix this?</li>
+</ul>
+</li>
+</ol>
+<h2><a href="https://discuss.mxnet.io/t/2331">Discussions</a></h2>
+<p><img src="static/img/qr_linear-regression.svg" alt="" /></p>
+</div>
+</div>
+
+
+<!-- begin::footer -->
+<footer style="margin-top:100%">
+    <div class="container-fluid">
+        <div>© 2020 Primex - <a href="" target="_blank">Laborasyon</a></div>
+        <div>
+            <nav class="nav">
+                <a href="http://bootstrapmb.com/" class="nav-link">Licenses</a>
+                <a href="#" class="nav-link">Change Log</a>
+                <a href="#" class="nav-link">Get Help</a>
+            </nav>
+        </div>
+    </div>
+</footer>
+<!-- end::footer -->
+
+</div>
+<!-- end::main-content -->
+
+</div>
+<!-- end::main -->
+
+<!-- Plugin scripts -->
+<script src="static/vendors/bundle.js"></script>
+
+
+<!-- Slick -->
+<script src="static/vendors/slick/slick.min.js"></script>
+
+<!-- Chartjs -->
+<script src="static/vendors/charts/chartjs/chart.min.js"></script>
+
+<!-- Apex chart -->
+<script src="https://apexcharts.com/samples/assets/irregular-data-series.js"></script>
+<script src="static/vendors/charts/apex/apexcharts.min.js"></script>
+
+<!-- Daterangepicker -->
+<script src="static/vendors/datepicker/daterangepicker.js"></script>
+
+<!-- DataTable -->
+<script src="static/vendors/dataTable/datatables.min.js"></script>
+
+<!-- Dashboard scripts -->
+<script src="static/assets/js/examples/dashboard.js"></script>
+
+<!-- To use theme colors with Javascript -->
+<div class="colors">
+<div class="bg-primary"></div>
+<div class="bg-primary-bright"></div>
+<div class="bg-secondary"></div>
+<div class="bg-secondary-bright"></div>
+<div class="bg-info"></div>
+<div class="bg-info-bright"></div>
+<div class="bg-success"></div>
+<div class="bg-success-bright"></div>
+<div class="bg-danger"></div>
+<div class="bg-danger-bright"></div>
+<div class="bg-warning"></div>
+<div class="bg-warning-bright"></div>
+</div>
+
+<script>
+$(function () {
+$('.slick-js').slick({
+    speed: 5,
+    arrows: false,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 200,
+    responsive: [
+        {
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 3
+            }
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 2
+            }
+        },
+        {
+            breakpoint: 500,
+            settings: {
+                slidesToShow: 1
+            }
+        }
+    ]
+});
+
+$('input[name="daterangepicker"]').daterangepicker({
+    opens: 'left'
+});
+
+$('.dataTable').DataTable({
+    lengthMenu: [5, 10],
+    "columnDefs": [{
+        "targets": 7,
+        "orderable": false
+    }]
+});
+})
+</script>
+
+
+<!-- App scripts -->
+<script src="static/assets/js/app.js"></script>
+
+</body>
+</html>
