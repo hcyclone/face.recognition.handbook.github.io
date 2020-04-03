@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>handbook of face recognition</title>
+
+    <!-- Favicon -->
+    <!-- {% load static %} -->
+    <link rel="icon" href="static/img/favicon_2.ico">
+<!-- {#    <link rel="shortcut icon" href="static/assets/media/image/favicon.png"/>#} -->
+    <!-- Plugin styles -->
+    <link rel="stylesheet" href="static/vendors/bundle.css" type="text/css">
+    <!-- Slick -->
+    <link rel="stylesheet" href="static/vendors/slick/slick.css" type="text/css">
+    <link rel="stylesheet" href="static/vendors/slick/slick-theme.css" type="text/css">
+
+    <!-- Daterangepicker -->
+    <link rel="stylesheet" href="static/vendors/datepicker/daterangepicker.css" type="text/css">
+
+    <!-- DataTable -->
+    <link rel="stylesheet" href="static/vendors/dataTable/datatables.min.css" type="text/css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="static/assets/css/app.css" type="text/css">
+    <!-- {% block script_link %} -->
+    <link rel="stylesheet" href="static/css/highlights/default.css">
+    <link rel="stylesheet" href="static/css/pygments.css"/>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <script src="static/js/jquery-2.1.3.min.js" ></script>
+    <style>
+    h1, h2, h3{color:rgb(33,150,243)!important}
+    .h1, h1 {
+        font-size: 28px;
+    }
+    p {
+        font-size: 16px;
+        letter-spacing: 0;
+        margin: 0 0 10px;
+        font-weight: 400;
+        line-height: 24px;
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+    </style>
+
+    <script type="text/x-mathjax-config">
+        window.MathJax.Hub.Config({
+            showProcessingMessages: false, //关闭js加载过程信息
+            messageStyle: "none", //不显示信息
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ], //行内公式选择符
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ], //段内公式选择符
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'], //避开某些标签
+                ignoreClass:"comment-content" //避开含该Class的标签
+            },
+            "HTML-CSS": {
+                availableFonts: ["STIX","TeX"], //可选字体
+                showMathMenu: false //关闭右击菜单显示
+            }
+        });
+        window.MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    </script>
+    <script src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" async="async" src="static/js/MathJax.js"></script>
+    <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.7/MathJax.js"></script>
+    <script data-no-instant>
+        InstantClick.on('change', function(isInitialLoad){
+            if (isInitialLoad === false) {
+                if (typeof MathJax !== 'undefined'){
+                    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+                }
+            }
+        });
+        InstantClick.init();
+    </script>
+<!-- <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"> -->
+</script>
+    <!-- {% endblock %} -->
+</head>
+<body>
+
+<!-- begin::preloader-->
+<!-- {#<div class="preloader">#}
+{#    <div class="preloader-icon"></div>#}
+{#</div>#} -->
+<!-- end::preloader -->
+
+<!-- begin::header -->
+<div class="header" style="background-color: #26A69A;color: white">
+
+    <div class="header-left">
+        <div class="navigation-toggler">
+            <a href="#" data-action="navigation-toggler">
+                <i data-feather="menu"></i>
+            </a>
+        </div>
+        <div class="header-logo">
+            <a href="d2l.html">
+<!-- {#                <img class="logo" src="{% static 'img/favicon_2.ico' %}" alt="logo">#} -->
+                <img style="width: 150px;display: block" class="logo" src="static/img/d2l_nav.png" alt="logo">
+<!-- {#                <img class="logo-light" src="#" alt="light logo">#} -->
+            </a>
+            <!-- <div style="margin:0 15%;text-align: center;z-index: 0;">
+                <div class="page-title" style="text-align: center;padding: 0">
+                    <span class="logo" style="color:white;font-size: 28px;">Handbook of Face Recognition (3rd Edition)</span>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    
+    <div class="header-body" >
+        <div style="margin:auto;text-align: center;">
+            <div class="page-title" style="text-align: center;padding: 0">
+                <span class="logo" style="color:white;font-size: 28px;">Handbook of Face Recognition (3rd Edition) <a href="d2l.html">d2l</a></span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- end::header -->
+
+<!-- begin::main -->
+<div id="main">
+
+    <!-- begin::navigation -->
+    <div class="navigation" style="padding: 0">
+        <div class="navigation-menu-body" style="font-size: 15px; font-weight: normal;color: #6a737d">
+            <div class="navigation-menu-group">
+                <div class="open"
+                     id="dashboards">
+                    <ul>
+                        <li>
+                            <a href="">Preface</a>
+                        </li>
+                        <li>
+                            <a href="">Installation</a>
+                        </li>
+                        <li>
+                            <a href="">Notation</a>
+                        </li>
+                        <li>
+                            <a href="">I. Introduction and Background</a>
+                            <ul>
+                                <li>
+                                    <a href="">1. Face Recognition Research and Development</a>
+                                </li>
+                                <li>
+                                    <a href="">2. The Deep Neural Networks Approach to Face Recognition</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="">II. Fundamentals of Deep Neural Networks</a>
+                            <ul>
+                                <li>
+                                    <a href="">3. Neural Network Architectures</a>
+                                </li>
+                                <li>
+                                    <a href="">4. Generative Autoencoder Networks</a>
+                                </li>
+                                <li>
+                                    <a href="">5. Generative Adversarial Networks</a>
+                                </li>
+                                <li>
+                                    <a href="">6. Transfer Learning and Domain Adaptation</a>
+                                </li>
+                                <li>
+                                    <a href="">7. Semi-supervised Learning</a>
+                                </li>
+                                <li>
+                                    <a href="">8. Neural Network Model Compression and Acceleration</a>
+                                </li>
+                                <li>
+                                    <a href="">9. Deep Learning Development Frameworks</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">III. Face Recognition by Deep Neural Networks</a>
+                            <ul>
+                                <li>
+                                    <a href="">10. Face Detection</a>
+                                </li>
+                                <li>
+                                    <a href="">11. Face Alignment</a>
+                                </li>
+                                <li>
+                                    <a href="">12. Face Parsing</a>
+                                </li>
+                                <li>
+                                    <a href="">13. 3D Face Landmarking and Morphing</a>
+                                </li>
+                                <li>
+                                    <a href="">14. Face Similarity Metric Learning</a>
+                                </li>
+                                <li>
+                                    <a href="">15. Face Feature Learning</a>
+                                </li>
+                                <li>
+                                    <a href="">16. Pose Invariant Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">17. Age Invariant Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">18. 3D Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">19. Heterogeneous Face Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">20. Face Spoofing Detection</a>
+                                </li>
+                                <li>
+                                    <a href="">21. Adversarial Face Perturbations</a>
+                                </li>
+                                <li>
+                                    <a href="">22. Face Expression Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">23. Face Attribute Recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">24. Multi-task Learning for Face Analysis</a>
+                                </li>
+                                <li>
+                                    <a href="">25. Face Recognition in Video</a>
+                                </li>
+                                <li>
+                                    <a href="">26. Face Super-resolution</a>
+                                </li>
+                                <li>
+                                    <a href="">27. Face Data Augmentation</a>
+                                </li>
+                                <li>
+                                    <a href="">28. Face Animation</a>
+                                </li>
+                                <li>
+                                    <a href="">29. Explainable face recognition</a>
+                                </li>
+                                <li>
+                                    <a href="">30. Bias in Face Recognition</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">IV. Face Recognition Systems</a>
+                            <ul>
+                <li>
+                    <a href="">31. Face Unlock Systems</a>
+                </li>
+                <li>
+                    <a href="">32. Large Scale Face Search Systems</a>
+                </li>
+                <li>
+                    <a href="">33. Security and Privacy Protection</a>
+                </li>
+                <li>
+                    <a href="">34. Database and Benchmarking</a>
+                </li>
+                <li>
+                    <a href="">35. Face Recognition Standards</a>
+                </li>
+                <li>
+                    <a href="">36. Government Regulations and Ethics</a>
+                </li>
+            </ul>
+                        </li>
+                        <li>
+                            <a href="">Appendix. Open Source Data and Code</a>
+                            <ul>
+                                <li>
+                                    <a href="">1. Open Source Data and Code: Overview</a>
+                                </li>
+                                <li>
+                                    <a href="">2. Fundamentals of Deep Neural Networks</a>
+                                </li>
+                                <li>
+                                    <a href="">3. Face Recognition by Deep Neural Networks</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="https://github.com/FRH-Code-Data/Appendix/blob/master/References.md">References</a>
+                            <ul>
+                                <li>
+                                    <a href="">Editors</a>
+                                </li>
+                                <li>
+                                    <a href="">Contributions</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end::navigation -->
+
+    <div class="main-content">
+        <div class="main">
+            <div class="document" role="main" style="padding: 0 15%">
+<ul class="list-group">
+    <li class="list-group-item"><a href="linear-regression.html">linear-regression</a>
+    </li>
+    <li class="list-group-item"><a href="softmax-regression-scratch.html">softmax-regression-scratch</a>
+    </li>
+    <li class="list-group-item"><a href="distributions.html">appendix-mathematics-for-deep-learning-distributions</a>
+    </li>
+    <li class="list-group-item"><a href="information-theory.html">appendix-mathematics-for-deep-learning-information-theory</a></li>
+    <li class="list-group-item"><a href="naive-bayes.html">appendix-mathematics-for-deep-learning-naive-bayes</a>
+    </li>
+</ul>
+</div>
+</div>
+
+
+<!-- begin::footer -->
+<footer style="margin-top:100%">
+    <div class="container-fluid">
+        <div>© 2020 Primex - <a href="" target="_blank">Laborasyon</a></div>
+        <div>
+            <nav class="nav">
+                <a href="http://bootstrapmb.com/" class="nav-link">Licenses</a>
+                <a href="#" class="nav-link">Change Log</a>
+                <a href="#" class="nav-link">Get Help</a>
+            </nav>
+        </div>
+    </div>
+</footer>
+<!-- end::footer -->
+
+</div>
+<!-- end::main-content -->
+
+</div>
+<!-- end::main -->
+
+<!-- Plugin scripts -->
+<script src="static/vendors/bundle.js"></script>
+
+
+<!-- Slick -->
+<script src="static/vendors/slick/slick.min.js"></script>
+
+<!-- Chartjs -->
+<script src="static/vendors/charts/chartjs/chart.min.js"></script>
+
+<!-- Apex chart -->
+<script src="https://apexcharts.com/samples/assets/irregular-data-series.js"></script>
+<script src="static/vendors/charts/apex/apexcharts.min.js"></script>
+
+<!-- Daterangepicker -->
+<script src="static/vendors/datepicker/daterangepicker.js"></script>
+
+<!-- DataTable -->
+<script src="static/vendors/dataTable/datatables.min.js"></script>
+
+<!-- Dashboard scripts -->
+<script src="static/assets/js/examples/dashboard.js"></script>
+
+<!-- To use theme colors with Javascript -->
+<div class="colors">
+<div class="bg-primary"></div>
+<div class="bg-primary-bright"></div>
+<div class="bg-secondary"></div>
+<div class="bg-secondary-bright"></div>
+<div class="bg-info"></div>
+<div class="bg-info-bright"></div>
+<div class="bg-success"></div>
+<div class="bg-success-bright"></div>
+<div class="bg-danger"></div>
+<div class="bg-danger-bright"></div>
+<div class="bg-warning"></div>
+<div class="bg-warning-bright"></div>
+</div>
+
+<script>
+$(function () {
+$('.slick-js').slick({
+    speed: 5,
+    arrows: false,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 200,
+    responsive: [
+        {
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 3
+            }
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 2
+            }
+        },
+        {
+            breakpoint: 500,
+            settings: {
+                slidesToShow: 1
+            }
+        }
+    ]
+});
+
+$('input[name="daterangepicker"]').daterangepicker({
+    opens: 'left'
+});
+
+$('.dataTable').DataTable({
+    lengthMenu: [5, 10],
+    "columnDefs": [{
+        "targets": 7,
+        "orderable": false
+    }]
+});
+})
+</script>
+
+
+<!-- App scripts -->
+<script src="static/assets/js/app.js"></script>
+
+</body>
+</html>
